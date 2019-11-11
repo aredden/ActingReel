@@ -88,5 +88,7 @@
                     sling:resourceType="ActingReel/components/content/sharing"/>
             </responsivegrid>
         </root>
+        <image/>
     </jcr:content>
+    <home/>
 </jcr:root>

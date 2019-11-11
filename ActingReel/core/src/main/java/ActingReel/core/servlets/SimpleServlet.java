@@ -35,6 +35,7 @@ import java.io.IOException;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
+@SuppressWarnings("serial")
 @Component(service=Servlet.class,
            property={
                    Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
@@ -44,7 +45,8 @@ import java.io.IOException;
            })
 public class SimpleServlet extends SlingSafeMethodsServlet {
 
-    private static final long serialVersionUid = 1L;
+    @SuppressWarnings("unused")
+	private static final long serialVersionUid = 1L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
