@@ -13,12 +13,7 @@
         sling:redirect="true"
         sling:redirectStatus="{Long}302"
         sling:resourceType="foundation/components/redirect"
-        redirectTarget="/content/ActingReel/en">
-        <image jcr:primaryType="nt:unstructured">
-            
-            <file.sftmp/>
-        </image>
-    </jcr:content>
+        redirectTarget="/content/ActingReel/en"/>
     <en/>
     <fr/>
 </jcr:root>

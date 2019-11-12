@@ -3,4 +3,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
     categories="[ActingReel.base]"
-    embed="[core.wcm.components.image.v1,core.wcm.components.breadcrumb.v1,core.wcm.components.form.container.v1,core.wcm.components.form.text.v1,core.wcm.components.list.v1,ActingReel.site]"/>
+    embed="[core.wcm.components.image.v1,core.wcm.components.carousel.v1,core.wcm.components.breadcrumb.v1,core.wcm.components.form.container.v1,core.wcm.components.form.text.v1,core.wcm.components.list.v1,ActingReel.site]"/>

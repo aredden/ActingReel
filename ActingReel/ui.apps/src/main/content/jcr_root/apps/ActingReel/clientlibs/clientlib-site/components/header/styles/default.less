@@ -1,5 +1,13 @@
 /* ActingReel Header - default.less */
 
+.actingreel-linkbox {
+    width: 78px;
+    height: 24px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
 .actingreel-header {
  z-index: 1030;
  position: fixed;
@@ -48,18 +56,5 @@
   float: left;
   margin-top: 0.25em;
   font-size: 1.5em;
- }
-}
-
-.scrolly {
- .actingreel-header {
-
-  @media (min-width: (@screen-medium + 1)) {
-   height: 80px;
-   background-color: @body-bg;
-   -webkit-box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.26);
-   -moz-box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.26);
-   box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.26);
-  }
  }
 }
