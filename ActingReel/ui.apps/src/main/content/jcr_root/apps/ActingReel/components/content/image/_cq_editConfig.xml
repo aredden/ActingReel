@@ -9,7 +9,7 @@
             propertyName="./fileReference">
             <parameters
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="ActingReel/components/content/image"
+                sling:resourceType="actingreel/components/content/image"
                 imageCrop=""
                 imageMap=""
                 imageRotate=""/>

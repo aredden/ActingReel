@@ -21,19 +21,19 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>ActingReel</groupId>
-        <artifactId>ActingReel</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>actingreel</groupId>
+        <artifactId>actingreel</artifactId>
+        <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>ActingReel.ui.content</artifactId>
+    <artifactId>actingreel.ui.content</artifactId>
     <packaging>content-package</packaging>
-    <name>ActingReel - UI content</name>
-    <description>UI content package for ActingReel</description>
+    <name>actingreel - UI content</name>
+    <description>UI content package for actingreel</description>
 
     <!-- <scm>
         <connection></connection>
@@ -91,12 +91,12 @@
                     <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
                     <verbose>true</verbose>
                     <failOnError>true</failOnError>
-                    <group>ActingReel</group>
+                    <group>actingreel</group>
                     <embeddeds>
                         <embedded>
-                            <groupId>ActingReel</groupId>
-                            <artifactId>ActingReel.core</artifactId>
-                            <target>/apps/ActingReel/install</target>
+                            <groupId>actingreel</groupId>
+                            <artifactId>actingreel.core</artifactId>
+                            <target>/apps/actingreel/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
@@ -109,9 +109,9 @@
     <!-- ====================================================================== -->
     <dependencies>
         <dependency>
-            <groupId>ActingReel</groupId>
-            <artifactId>ActingReel.core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>actingreel</groupId>
+            <artifactId>actingreel.core</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

@@ -18,19 +18,19 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ActingReel</groupId>
-        <artifactId>ActingReel</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>actingreel</groupId>
+        <artifactId>actingreel</artifactId>
+        <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>ActingReel.it.launcher</artifactId>
+    <artifactId>actingreel.it.launcher</artifactId>
     <packaging>jar</packaging>
-    <name>ActingReel - Integration Tests Launcher</name>
-    <description>Integration Tests Launcher for ActingReel</description>
+    <name>actingreel - Integration Tests Launcher</name>
+    <description>Integration Tests Launcher for actingreel</description>
 
     <!-- <scm>
         <connection></connection>
@@ -230,8 +230,8 @@
                                 -->
                                 <sling.additional.bundle.1>org.apache.sling.junit.core</sling.additional.bundle.1>
                                 <sling.additional.bundle.2>org.apache.sling.junit.scriptable</sling.additional.bundle.2>
-                                <sling.additional.bundle.3>ActingReel.it.tests</sling.additional.bundle.3>
-                                <sling.additional.bundle.4>ActingReel.core</sling.additional.bundle.4>
+                                <sling.additional.bundle.3>actingreel.it.tests</sling.additional.bundle.3>
+                                <sling.additional.bundle.4>actingreel.core</sling.additional.bundle.4>
                                 <sling.additional.bundle.5>org.apache.sling.junit.remote</sling.additional.bundle.5>
                                 <sling.additional.bundle.6>org.apache.sling.testing.tools</sling.additional.bundle.6>
                                 <sling.additional.bundle.7>httpclient-osgi</sling.additional.bundle.7>
@@ -323,14 +323,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ActingReel</groupId>
-            <artifactId>ActingReel.it.tests</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>actingreel</groupId>
+            <artifactId>actingreel.it.tests</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>ActingReel</groupId>
-            <artifactId>ActingReel.core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>actingreel</groupId>
+            <artifactId>actingreel.core</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

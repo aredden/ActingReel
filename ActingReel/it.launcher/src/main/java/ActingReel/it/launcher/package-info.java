@@ -14,4 +14,4 @@
  *  limitations under the License.
  */
 // this file simply ensures that the resulting jar is not empty - see issue #30
-package ActingReel.it.launcher;
+package actingreel.it.launcher;

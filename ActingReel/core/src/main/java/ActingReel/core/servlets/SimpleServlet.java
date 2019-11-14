@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package ActingReel.core.servlets;
+package actingreel.core.servlets;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -35,18 +35,16 @@ import java.io.IOException;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
-@SuppressWarnings("serial")
 @Component(service=Servlet.class,
            property={
                    Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
                    "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                   "sling.servlet.resourceTypes="+ "ActingReel/components/structure/page",
+                   "sling.servlet.resourceTypes="+ "actingreel/components/structure/page",
                    "sling.servlet.extensions=" + "txt"
            })
 public class SimpleServlet extends SlingSafeMethodsServlet {
 
-    @SuppressWarnings("unused")
-	private static final long serialVersionUid = 1L;
+    private static final long serialVersionUid = 1L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,

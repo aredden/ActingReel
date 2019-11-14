@@ -3,31 +3,29 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-11T14:35:52.138-05:00"
+        cq:lastModified="{Date}2019-11-13T20:22:16.029-05:00"
         cq:lastModifiedBy="admin"
-        cq:template="/conf/ActingReel/settings/wcm/templates/landing-page-template"
+        cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="ActingReel/components/structure/page">
+        sling:resourceType="actingreel/components/structure/page">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
-            <header
-                jcr:created="{Date}2019-11-11T14:35:25.393-05:00"
+            <list
+                jcr:created="{Date}2019-11-13T20:21:19.604-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-11T14:35:25.393-05:00"
+                jcr:lastModified="{Date}2019-11-13T20:22:16.027-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="ActingReel/components/structure/header"/>
-            <responsivegrid
-                jcr:created="{Date}2019-11-11T14:35:52.133-05:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-11T14:35:52.133-05:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="wcm/foundation/components/responsivegrid"
-                editable="{Boolean}true">
-                <cq:responsive jcr:primaryType="nt:unstructured"/>
-            </responsivegrid>
+                sling:resourceType="actingreel/components/content/list"
+                childDepth="1"
+                linkItems="true"
+                listFrom="static"
+                pages="[/content/actingreel/en/home,/content/actingreel/en/home/actingreel]"
+                showDescription="false"
+                showModificationDate="false"
+                sortOrder="asc"
+                tagsMatch="any"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

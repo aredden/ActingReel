@@ -14,6 +14,6 @@
  *  limitations under the License.
  */
 @Version("1.0")
-package ActingReel.core;
+package actingreel.core;
 
 import org.osgi.annotation.versioning.Version;

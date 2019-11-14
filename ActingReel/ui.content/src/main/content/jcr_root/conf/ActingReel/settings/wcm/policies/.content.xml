@@ -8,12 +8,12 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-11-11T14:42:06.003-05:00"
+                        jcr:lastModified="{Date}2019-11-13T20:07:00.141-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="ActingReel Default"
+                        jcr:title="Acting Reel Content Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:ActingReel,/apps/ActingReel/components/form/container,/apps/ActingReel/components/structure/header]"
+                        components="[/libs/wcm/foundation/components/responsivegrid,/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/form/container]"
                         policyResourceType="wcm/foundation/components/responsivegrid">
                         <cq:authoring jcr:primaryType="nt:unstructured">
                             <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -22,7 +22,7 @@
                                     assetGroup="media"
                                     assetMimetype="image/*"
                                     droptarget="image"
-                                    resourceType="ActingReel/components/content/image"
+                                    resourceType="actingreel/components/content/image"
                                     type="Images"/>
                             </assetToComponentMapping>
                         </cq:authoring>
@@ -30,42 +30,23 @@
                             jcr:primaryType="nt:unstructured"
                             mergeList="{Boolean}true"/>
                     </content-default>
-                    <policy_325543341369500
-                        jcr:lastModified="{Date}2019-11-11T14:42:19.137-05:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Acting Reel Content Policy"
-                        sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,/libs/foundation/components/video,/apps/ActingReel/components/content/breadcrumb,/apps/ActingReel/components/content/image,/apps/ActingReel/components/content/text,/apps/ActingReel/components/content/title]">
-                        <jcr:content jcr:primaryType="nt:unstructured"/>
-                        <cq:authoring jcr:primaryType="nt:unstructured">
-                            <assetToComponentMapping jcr:primaryType="nt:unstructured">
-                                <mapping_1573501053839
-                                    jcr:primaryType="nt:unstructured"
-                                    assetGroup="media"
-                                    assetMimetype="Image/*"
-                                    droptarget="image"
-                                    resourceType="ActingReel/components/content/image"/>
-                            </assetToComponentMapping>
-                        </cq:authoring>
-                    </policy_325543341369500>
                 </responsivegrid>
             </components>
         </foundation>
     </wcm>
-    <ActingReel jcr:primaryType="nt:unstructured">
+    <actingreel jcr:primaryType="nt:unstructured">
         <components jcr:primaryType="nt:unstructured">
             <form jcr:primaryType="nt:unstructured">
                 <container jcr:primaryType="nt:unstructured">
                     <form-container
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="ActingReel Form"
+                        jcr:title="actingreel Form"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/ActingReel/components/form/button,/apps/ActingReel/components/form/hidden,/apps/ActingReel/components/form/options,/apps/ActingReel/components/form/text]">
+                        components="[/apps/actingreel/components/form/button,/apps/actingreel/components/form/hidden,/apps/actingreel/components/form/options,/apps/actingreel/components/form/text]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </form-container>
                 </container>
             </form>
         </components>
-    </ActingReel>
+    </actingreel>
 </jcr:root>

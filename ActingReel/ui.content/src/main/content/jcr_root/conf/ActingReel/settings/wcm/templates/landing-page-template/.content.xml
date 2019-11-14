@@ -2,9 +2,9 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2019-11-11T14:40:32.157-05:00"
+        cq:lastModified="{Date}2019-11-13T20:22:16.029-05:00"
         cq:lastModifiedBy="admin"
-        cq:templateType="/conf/ActingReel/settings/wcm/template-types/empty-page"
+        cq:templateType="/conf/actingreel/settings/wcm/template-types/empty-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="Landing Page Template"
         status="enabled"/>
