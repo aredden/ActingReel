@@ -8,12 +8,12 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-11-14T12:12:25.306-05:00"
+                        jcr:lastModified="{Date}2019-11-15T15:19:55.298-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Acting Reel Content Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title]"
+                        components="[/libs/wcm/foundation/components/responsivegrid,/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/content/topnav]"
                         policyResourceType="wcm/foundation/components/responsivegrid">
                         <cq:authoring jcr:primaryType="nt:unstructured">
                             <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -47,6 +47,9 @@
                     </form-container>
                 </container>
             </form>
+            <content jcr:primaryType="nt:unstructured">
+                <topnav jcr:primaryType="nt:unstructured"/>
+            </content>
         </components>
     </actingreel>
 </jcr:root>
