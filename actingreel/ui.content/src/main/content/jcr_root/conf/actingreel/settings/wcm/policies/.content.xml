@@ -8,7 +8,7 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-11-15T15:19:55.298-05:00"
+                        jcr:lastModified="{Date}2019-11-15T16:46:53.328-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Acting Reel Content Policy"
@@ -49,6 +49,8 @@
             </form>
             <content jcr:primaryType="nt:unstructured">
                 <topnav jcr:primaryType="nt:unstructured"/>
+                <text jcr:primaryType="nt:unstructured"/>
+                <image jcr:primaryType="nt:unstructured"/>
             </content>
         </components>
     </actingreel>
