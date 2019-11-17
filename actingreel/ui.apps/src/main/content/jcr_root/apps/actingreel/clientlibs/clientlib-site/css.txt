@@ -2,4 +2,3 @@
 
 normalize.css
 main.less
-bootstrap/css/bootstrap.css
