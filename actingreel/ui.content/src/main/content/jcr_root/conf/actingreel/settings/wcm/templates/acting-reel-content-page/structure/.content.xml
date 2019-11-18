@@ -7,35 +7,8 @@
         jcr:primaryType="cq:PageContent"
         sling:resourceType="actingreel/components/structure/page">
         <root
-            jcr:lastModified="{Date}2019-11-15T15:19:36.072-05:00"
-            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/foundation/components/responsivegrid">
-            <topnav
-                jcr:created="{Date}2019-11-15T15:18:25.040-05:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-15T15:18:36.832-05:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="actingreel/components/content/topnav"
-                childDepth="1"
-                linkItems="true"
-                listFrom="children"
-                showDescription="false"
-                showModificationDate="false"
-                sortOrder="asc"
-                tagsMatch="any"/>
-            <responsivegrid
-                jcr:created="{Date}2019-11-15T15:18:59.048-05:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-15T15:18:59.048-05:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="wcm/foundation/components/responsivegrid"
-                editable="{Boolean}true">
-                <cq:responsive jcr:primaryType="nt:unstructured"/>
-            </responsivegrid>
-        </root>
+            sling:resourceType="wcm/foundation/components/responsivegrid"/>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone

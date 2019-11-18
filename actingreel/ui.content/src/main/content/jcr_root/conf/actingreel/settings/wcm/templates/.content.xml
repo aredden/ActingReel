@@ -3,6 +3,6 @@
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
     <content-page/>
-    <acting-reel-content-page/>
     <landing-page-template/>
+    <acting-reel-content-page/>
 </jcr:root>

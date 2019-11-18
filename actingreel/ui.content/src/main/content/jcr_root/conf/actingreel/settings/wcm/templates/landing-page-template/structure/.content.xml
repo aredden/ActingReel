@@ -3,36 +3,32 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-14T16:04:36.557-05:00"
+        cq:lastModified="{Date}2019-11-18T16:38:19.675-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="actingreel/components/structure/page">
         <root
-            jcr:lastModified="{Date}2019-11-14T12:12:02.364-05:00"
-            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
             <topnav
-                jcr:created="{Date}2019-11-14T16:02:13.213-05:00"
+                jcr:created="{Date}2019-11-18T16:37:37.357-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-14T16:04:36.541-05:00"
+                jcr:lastModified="{Date}2019-11-18T16:37:46.139-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="actingreel/components/content/topnav"
                 childDepth="1"
-                linkItems="true"
-                listFrom="static"
-                pages="[/content/actingreel/en/home,/content/actingreel/en/home/actingreel]"
-                parentPage="/content/actingreel/en/home"
+                linkItems="false"
+                listFrom="children"
                 showDescription="false"
                 showModificationDate="false"
                 sortOrder="asc"
                 tagsMatch="any"/>
             <responsivegrid
-                jcr:created="{Date}2019-11-14T12:12:06.379-05:00"
+                jcr:created="{Date}2019-11-18T16:38:19.675-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-14T12:12:06.379-05:00"
+                jcr:lastModified="{Date}2019-11-18T16:38:19.675-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid"
