@@ -4,22 +4,31 @@ import java.util.*;
 import java.util.Iterator;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
+import com.day.cq.wcm.api.PageManager;
+import org.apache.sling.api.resource.ResourceResolver;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 
 public class TopNav extends WCMUsePojo{
     private List<Page> items = new ArrayList<Page>();
     private Page rootPage;
-
+    private PageManager pageMgr;
+    private String rootString;
+    private ResourceResolver resolver;
     // Initializes the navigation
     @Override
     public void activate() throws Exception {
-        rootPage = getCurrentPage().getAbsoluteParent(3);
 
-        if (rootPage == null) {
-        	rootPage = getCurrentPage();
-        }
+    	
+        rootString = getProperties().get("parentPage",null);
         
+        if (rootString == null) {
+        	rootPage = getCurrentPage();
+        } else {
+        	resolver = getRequest().getResourceResolver();
+        	pageMgr = resolver.adaptTo(PageManager.class);
+        	rootPage = pageMgr.getPage(rootString).adaptTo(Page.class);
+        }
         
         Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()));
         while (childPages.hasNext()) {
@@ -33,6 +42,8 @@ public class TopNav extends WCMUsePojo{
     }
     // Returns the navigation root
     public Page getRoot() {
-        return rootPage;
+    	if(rootPage.equals(null)) {
+    		return(getCurrentPage());
+    	} else return rootPage;
     }
 }
