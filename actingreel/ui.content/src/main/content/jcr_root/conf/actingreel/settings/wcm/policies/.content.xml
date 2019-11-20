@@ -31,12 +31,12 @@
                             mergeList="{Boolean}true"/>
                     </content-default>
                     <policy_3820369915500
-                        jcr:lastModified="{Date}2019-11-18T16:39:39.317-05:00"
+                        jcr:lastModified="{Date}2019-11-20T10:16:13.536-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Acting Reel Content Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/content/topnav,/apps/actingreel/components/form/container]">
+                        components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/carousel,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/form/container]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_3820369915500>
                 </responsivegrid>
@@ -56,6 +56,12 @@
                     </form-container>
                 </container>
             </form>
+            <content jcr:primaryType="nt:unstructured">
+                <topnav jcr:primaryType="nt:unstructured"/>
+            </content>
+            <structure jcr:primaryType="nt:unstructured">
+                <page jcr:primaryType="nt:unstructured"/>
+            </structure>
         </components>
     </actingreel>
 </jcr:root>

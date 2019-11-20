@@ -3,28 +3,32 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-18T16:38:19.675-05:00"
+        cq:lastModified="{Date}2019-11-20T11:43:08.817-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="actingreel/components/structure/page">
         <root
+            jcr:lastModified="{Date}2019-11-19T13:01:48.398-05:00"
+            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
-            <topnav
-                jcr:created="{Date}2019-11-18T16:37:37.357-05:00"
+            <topnav_219438598
+                jcr:created="{Date}2019-11-19T13:01:24.897-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-11-18T16:37:46.139-05:00"
+                jcr:lastModified="{Date}2019-11-19T13:41:53.207-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="actingreel/components/content/topnav"
-                childDepth="1"
-                linkItems="false"
-                listFrom="children"
-                showDescription="false"
-                showModificationDate="false"
-                sortOrder="asc"
-                tagsMatch="any"/>
+                parentPage="/content/actingreel/en/home"/>
+            <topnav
+                jcr:created="{Date}2019-11-19T14:19:00.738-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-11-20T11:43:08.814-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="actingreel/components/structure/topnav"
+                parentPage="/content/actingreel/en/home"/>
             <responsivegrid
                 jcr:created="{Date}2019-11-18T16:38:19.675-05:00"
                 jcr:createdBy="admin"

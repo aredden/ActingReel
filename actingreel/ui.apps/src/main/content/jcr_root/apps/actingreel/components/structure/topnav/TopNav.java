@@ -1,4 +1,4 @@
-package apps.actingreel.components.content.topnav;
+package apps.actingreel.components.structure.topnav;
 
 import java.util.*;
 import java.util.Iterator;
@@ -18,7 +18,6 @@ public class TopNav extends WCMUsePojo{
     // Initializes the navigation
     @Override
     public void activate() throws Exception {
-
     	
         rootString = getProperties().get("parentPage",null);
         

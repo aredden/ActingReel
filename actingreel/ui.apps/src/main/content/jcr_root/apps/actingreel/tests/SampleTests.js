@@ -25,4 +25,10 @@ new hobs.TestSuite("actingreel Tests", {path:"/apps/actingreel/tests/SampleTests
         .navigateTo("/content/actingreel/fr.html")
         .asserts.location("/content/actingreel/fr.html", true)
         .asserts.visible(".helloworld", true)
-    );
+    )
+
+	.addTestCase(new hobs.TestCase("TopNav component on HOME page")
+		.navigateTo("/content/actingreel/en/home.html")
+		.assert.location("/content/actingreel/en/home.html")
+		.assert.visible(".topnav",true)
+	);

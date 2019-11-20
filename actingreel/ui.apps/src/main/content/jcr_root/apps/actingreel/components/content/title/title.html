@@ -1,0 +1,12 @@
+<div data-sly-use.title="com.adobe.cq.wcm.core.components.models.Title"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-element="${title.type}"
+    data-sly-test.text="${title.text}"
+    class="jumbotron jumbotron-fluid">
+	  <div class="container">
+	    <h1 class="display-4 text-center">${text}</h1>
+	    <p class="lead text-center">Best actress in the world.</p>
+	  </div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>
