@@ -8,7 +8,7 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-11-21T11:34:08.165-05:00"
+                        jcr:lastModified="{Date}2019-11-21T16:46:51.998-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="actingreel Default"
@@ -31,7 +31,7 @@
                             mergeList="{Boolean}true"/>
                     </content-default>
                     <policy_3820369915500
-                        jcr:lastModified="{Date}2019-11-21T11:34:36.889-05:00"
+                        jcr:lastModified="{Date}2019-11-21T16:41:44.619-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Acting Reel Content Policy"
@@ -39,6 +39,15 @@
                         components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/carousel,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/form/container]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_3820369915500>
+                    <policy_264464841784300
+                        jcr:lastModified="{Date}2019-11-21T17:03:06.712-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Acting Reel Content Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/carousel,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_264464841784300>
                 </responsivegrid>
             </components>
         </foundation>

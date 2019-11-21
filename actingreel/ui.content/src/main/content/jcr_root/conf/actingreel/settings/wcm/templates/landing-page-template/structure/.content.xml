@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-20T11:43:08.817-05:00"
+        cq:lastModified="{Date}2019-11-21T18:08:42.185-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
@@ -39,6 +39,23 @@
                 editable="{Boolean}true">
                 <cq:responsive jcr:primaryType="nt:unstructured"/>
             </responsivegrid>
+            <guidefooter
+                jcr:created="{Date}2019-11-21T16:40:36.550-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-11-21T16:40:36.550-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Adaptive Form Footer"
+                sling:resourceType="fd/af/components/guidefooter"/>
+            <footer
+                jcr:created="{Date}2019-11-21T16:45:48.355-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-11-21T18:08:42.181-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="actingreel/components/content/footer"
+                footerText="All rights reserved Juliana Redden (tm) 2019"
+                text="Stuff"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

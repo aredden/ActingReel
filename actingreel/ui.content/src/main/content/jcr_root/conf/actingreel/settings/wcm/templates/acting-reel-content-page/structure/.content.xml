@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-21T15:04:06.525-05:00"
+        cq:lastModified="{Date}2019-11-21T18:07:40.522-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/acting-reel-content-page"
         jcr:primaryType="cq:PageContent"
@@ -26,6 +26,24 @@
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="actingreel/components/content/title"/>
+            <responsivegrid
+                jcr:created="{Date}2019-11-21T17:02:24.629-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-11-21T17:02:24.629-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid"
+                editable="{Boolean}true">
+                <cq:responsive jcr:primaryType="nt:unstructured"/>
+            </responsivegrid>
+            <footer
+                jcr:created="{Date}2019-11-21T17:02:14.893-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-11-21T18:07:40.519-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="actingreel/components/content/footer"
+                footerText="All rights reserved Juliana Redden (tm) 2019 2020"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
