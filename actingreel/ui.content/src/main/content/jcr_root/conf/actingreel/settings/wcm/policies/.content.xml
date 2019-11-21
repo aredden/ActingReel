@@ -8,12 +8,12 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-11-18T16:38:15.167-05:00"
+                        jcr:lastModified="{Date}2019-11-21T11:34:08.165-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="actingreel Default"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:actingreel,/apps/actingreel/components/form/container]"
+                        components="[/libs/foundation/components/image,/libs/wcm/foundation/components/responsivegrid,group:actingreel,/apps/actingreel/components/form/container]"
                         policyResourceType="wcm/foundation/components/responsivegrid">
                         <cq:authoring jcr:primaryType="nt:unstructured">
                             <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -31,12 +31,12 @@
                             mergeList="{Boolean}true"/>
                     </content-default>
                     <policy_3820369915500
-                        jcr:lastModified="{Date}2019-11-20T10:16:13.536-05:00"
+                        jcr:lastModified="{Date}2019-11-21T11:34:36.889-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Acting Reel Content Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/carousel,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/form/container]">
+                        components="[/apps/actingreel/components/content/breadcrumb,/apps/actingreel/components/content/carousel,/apps/actingreel/components/content/image,/apps/actingreel/components/content/list,/apps/actingreel/components/content/text,/apps/actingreel/components/content/title,/apps/actingreel/components/form/container]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_3820369915500>
                 </responsivegrid>
@@ -58,6 +58,47 @@
             </form>
             <content jcr:primaryType="nt:unstructured">
                 <topnav jcr:primaryType="nt:unstructured"/>
+                <image jcr:primaryType="nt:unstructured">
+                    <policy_1574354208911
+                        jcr:lastModified="{Date}2019-11-21T11:37:51.013-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Home Carousel Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        allowUpload="false">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                        <plugins jcr:primaryType="nt:unstructured">
+                            <crop
+                                jcr:primaryType="nt:unstructured"
+                                features="*">
+                                <aspectRatios jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        name="Wide Landscape"
+                                        ratio="0.6180"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        name="Landscape"
+                                        ratio="0.8284"/>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        name="Square"
+                                        ratio="1"/>
+                                    <item3
+                                        jcr:primaryType="nt:unstructured"
+                                        name="Portrait"
+                                        ratio="1.6180"/>
+                                </aspectRatios>
+                            </crop>
+                            <rotate
+                                jcr:primaryType="nt:unstructured"
+                                features="right"/>
+                            <flip
+                                jcr:primaryType="nt:unstructured"
+                                features="-"/>
+                        </plugins>
+                    </policy_1574354208911>
+                </image>
             </content>
             <structure jcr:primaryType="nt:unstructured">
                 <page jcr:primaryType="nt:unstructured"/>

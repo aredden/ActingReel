@@ -1,3 +1,5 @@
 #base=.
 
 components/page/page.js
+
+components/topnav/topnav.js
