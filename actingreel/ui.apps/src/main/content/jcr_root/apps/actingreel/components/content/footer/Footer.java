@@ -9,7 +9,7 @@ public class Footer extends WCMUsePojo{
 	public void activate() throws Exception {
 		
 		text = getProperties().get("footerText",null);
-		System.out.println(text);
+
 	}
 	
 	public String getFooterText(){

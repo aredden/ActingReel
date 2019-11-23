@@ -14,7 +14,6 @@ public class TopNavModel extends WCMUsePojo{
     private Page rootPage;
     private PageManager pageMgr;
     private String rootString;
-    private ResourceResolver resolver;
     // Initializes the navigation
     @Override
     public void activate() throws Exception {
@@ -28,12 +27,10 @@ public class TopNavModel extends WCMUsePojo{
     }
 
 	private void findRootPage(String rootString) {
-
         if (rootString == null) {
         	rootPage = getCurrentPage();
         } else {
-        	resolver = getRequest().getResourceResolver();
-        	pageMgr = resolver.adaptTo(PageManager.class);
+        	pageMgr = getPageManager();
         	rootPage = pageMgr.getPage(rootString).adaptTo(Page.class);
         }
 

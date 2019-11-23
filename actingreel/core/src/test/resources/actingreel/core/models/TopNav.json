@@ -1,0 +1,6 @@
+{
+	"topnav":{
+		"jcr:primaryType": "nt:unstructured",
+		"sling:resourceType": "actingreel/components/structure/topnav"	
+	}
+}

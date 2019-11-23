@@ -77,6 +77,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
+         <dependency>
+			  <groupId>io.wcm</groupId>
+			  <artifactId>io.wcm.testing.aem-mock.junit4</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.adobe.aem</groupId>
             <artifactId>uber-jar</artifactId>
