@@ -5,7 +5,6 @@ import java.util.Iterator;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
-import org.apache.sling.api.resource.ResourceResolver;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 
@@ -18,9 +17,8 @@ public class TopNavModel extends WCMUsePojo{
     @Override
     public void activate() throws Exception {
 		rootString = getProperties().get("parentPage",null);
-    	
         findRootPage(rootString);
-        Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()));
+        Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()),false);
         while (childPages.hasNext()) {
 			items.add(childPages.next());
 	   	}
@@ -42,8 +40,6 @@ public class TopNavModel extends WCMUsePojo{
     }
     // Returns the navigation root
     public Page getRoot() {
-    	if(rootPage.equals(null)) {
-    		return(getCurrentPage());
-    	} else return rootPage;
+    	return rootPage;
     }
 }

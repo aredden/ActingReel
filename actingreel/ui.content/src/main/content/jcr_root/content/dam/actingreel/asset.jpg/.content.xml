@@ -9,14 +9,14 @@
         cq:parentPath="/content/dam/actingreel"
         dam:assetState="processed"
         dam:relativePath="actingreel/asset.jpg"
-        jcr:lastModified="{Date}2019-11-20T11:47:47.960-05:00"
+        jcr:lastModified="{Date}2019-11-23T14:07:13.579-05:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
             dam:Bitsperpixel="{Long}24"
             dam:ColorSpace="{Long}-1"
             dam:ExifOffset="{Long}232"
-            dam:extracted="{Date}2019-11-20T11:47:46.941-05:00"
+            dam:extracted="{Date}2019-11-23T14:07:13.401-05:00"
             dam:Fileformat="JPEG"
             dam:JpgFromRawLength="{Long}988"
             dam:JpgFromRawStart="{Long}382"
