@@ -1,8 +1,11 @@
-  <div data-sly-use.carousel="actingreel.core.models.CarouselModel" id="carouselControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner carousel--img">
-      
-      <div data-sly-repeat="${carousel.items}" class="carousel-item">
-        <img src="${item.string}" class="d-block w-100" alt="#"/>
+  <div 
+    data-sly-use.carousel="actingreel.core.models.CarouselModel" 
+    id="carouselControls" 
+    class="carousel slide" 
+    data-ride="carousel">
+    <div class="carousel-inner" data-sly-list="${carousel.items}">
+      <div class="carousel-item ${itemList.index == 0 ? 'active' : ''}">
+        <img src="${item}" class="d-block w-100" alt="#"/>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
@@ -13,6 +16,4 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-  <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
-  <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+</div>

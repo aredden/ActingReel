@@ -26,5 +26,6 @@ public class CarouselModel extends WCMUsePojo {
 	public List<String> getItems(){
 		return imageData;
 	}
-
+	
 }
+
