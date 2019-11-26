@@ -55,7 +55,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
+			fail(e.getCause().toString());
 		}
 		
 		topnav.init(bindings);
@@ -70,7 +70,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
+			fail(e.getCause().toString());
 		}
 		
 		String expected = "/content/actingreel/en";
@@ -86,8 +86,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
+			fail(e.getCause().toString());
 		}
 		
 		topnav.init(bindings);
@@ -102,8 +101,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
+			fail(e.getCause().toString());
 		}
 
 		topnav.init(bindings);
@@ -118,8 +116,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
+			fail(e.getCause().toString());
 		}
 
 		topnav.init(bindings);
@@ -134,8 +131,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
+			fail(e.getCause().toString());
 		}
 		
 		topnav.init(bindings);
@@ -151,8 +147,7 @@ public class TestTopNavModel {
 		try {
 			setUpTest();
 		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
+			fail(e.getCause().toString());
 		}
 		
 		topnav.init(bindings);

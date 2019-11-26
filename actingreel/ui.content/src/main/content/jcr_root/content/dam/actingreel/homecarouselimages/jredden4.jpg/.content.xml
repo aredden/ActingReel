@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:Iptc4xmpCore="http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:mixinTypes="[mix:referenceable]"
     jcr:primaryType="dam:Asset"
     jcr:uuid="63da7da8-972b-40f9-9b45-24d64f1d7fc0">
     <jcr:content
+        cq:lastReplicated="{Date}2019-11-25T22:54:07.363-05:00"
+        cq:lastReplicatedBy="admin"
+        cq:lastReplicationAction="Deactivate"
         dam:assetState="processed"
         dam:relativePath="actingreel/homecarouselimages/jredden4.jpg"
         jcr:lastModified="{Date}2019-11-20T14:30:01.256-05:00"
         jcr:lastModifiedBy="admin"
+        jcr:mixinTypes="[cq:ReplicationStatus]"
         jcr:primaryType="dam:AssetContent">
         <metadata
             dam:extracted="{Date}2019-11-20T14:30:00.857-05:00"
@@ -15,7 +19,9 @@
             dam:size="{Long}89658"
             dc:format="image/jpeg"
             jcr:mixinTypes="[cq:Taggable]"
-            jcr:primaryType="nt:unstructured"/>
+            jcr:primaryType="nt:unstructured">
+            <Iptc4xmpCore:CreatorContactInfo jcr:primaryType="nt:unstructured"/>
+        </metadata>
         <related jcr:primaryType="nt:unstructured"/>
     </jcr:content>
 </jcr:root>

@@ -24,6 +24,7 @@ public class TopNavModel extends WCMUsePojo{
 	   	}
     }
 
+    
 	private void findRootPage(String rootString) {
         if (rootString == null) {
         	rootPage = getCurrentPage();
