@@ -9,10 +9,12 @@ import com.day.cq.wcm.api.PageManager;
 import com.adobe.cq.sightly.WCMUsePojo;
 
 public class TopNavModel extends WCMUsePojo{
+	
     private List<Page> items = new ArrayList<Page>();
     private Page rootPage;
     private PageManager pageMgr;
     private String rootString;
+    
     // Initializes the navigation
     @Override
     public void activate() throws Exception {
@@ -24,7 +26,6 @@ public class TopNavModel extends WCMUsePojo{
 	   	}
     }
 
-    
 	private void findRootPage(String rootString) {
         if (rootString == null) {
         	rootPage = getCurrentPage();

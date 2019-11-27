@@ -2,3 +2,7 @@
 
 components/page/page.js
 components/topnav/topnav.js
+bootstrap/jquery.slim.min.js
+bootstrap/popper.min.js
+bootstrap/bootstrap.min.js
+
