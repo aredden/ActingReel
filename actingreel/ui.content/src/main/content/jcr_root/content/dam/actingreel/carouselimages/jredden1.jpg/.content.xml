@@ -2,17 +2,17 @@
 <jcr:root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:mixinTypes="[mix:referenceable]"
     jcr:primaryType="dam:Asset"
-    jcr:uuid="a9c2e870-bb14-4680-addd-3599e0b022dd">
+    jcr:uuid="51dea7bb-1320-4869-9f04-c48cffd48778">
     <jcr:content
         dam:assetState="processed"
-        dam:relativePath="actingreel/homecarouselimages/jredden3.jpg"
-        jcr:lastModified="{Date}2019-11-20T14:30:01.249-05:00"
+        dam:relativePath="actingreel/carouselimages/jredden1.jpg"
+        jcr:lastModified="{Date}2019-11-30T16:28:56.080-05:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
-            dam:extracted="{Date}2019-11-20T14:30:00.857-05:00"
-            dam:sha1="dcd03b2b40435105af8115b7e20ebd8774a82af6"
-            dam:size="{Long}87886"
+            dam:extracted="{Date}2019-11-30T16:28:55.810-05:00"
+            dam:sha1="566bcd58659acf4021b341a6fe5d90f63f07ffe2"
+            dam:size="{Long}68638"
             dc:format="image/jpeg"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"/>

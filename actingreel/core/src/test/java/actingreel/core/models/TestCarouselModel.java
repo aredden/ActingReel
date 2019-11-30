@@ -6,11 +6,12 @@ import javax.script.Bindings;
 
 import org.junit.Test;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ValueMap;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -35,6 +36,16 @@ public class TestCarouselModel {
 	
 	private String currentPagePath;
 	
+	public void setUpAlternate() throws Exception{
+		ctx.load().json("/actingreel/core/models/CarouselModel.json","/content/secondsite");
+		carousel = new CarouselModel();
+		
+		
+		when(bindings.get("resource"))
+		.thenReturn(ctx.resourceResolver()
+		.getResource(currentPagePath+"/jcr:content/root/responsivegrid/carousel"));
+	}
+	
 	public void setUpTest() throws Exception {
 		ctx.load().json("/actingreel/core/models/CarouselModel.json","/content/actingreel");
 		carousel = new CarouselModel();
@@ -44,14 +55,19 @@ public class TestCarouselModel {
 		.getResource(currentPagePath+"/jcr:content/root/carousel"));
 	}
 	
-	@Test
-	public void testNoImageReferenceProperty() {
-		currentPagePath = "/content/actingreel/en";
+	public void setUp(String path) {
+		currentPagePath = path;
 		try {
 			setUpTest();
 		} catch (Exception e) {
 			fail(e.toString());
 		}
+	}
+	
+	@Test
+	public void testNoImageReferenceProperty() {
+		setUp("/content/actingreel/en");
+		
 		carousel.init(bindings);
 		List<String> actual = carousel.getItems();
 		assertNotNull(actual);
@@ -60,12 +76,8 @@ public class TestCarouselModel {
 
 	@Test
 	public void testNoImages() {
-		currentPagePath = "/content/actingreel/en/home/noreferences";
-		try {
-			setUpTest();
-		} catch (Exception e) {
-			fail(e.toString());
-		}
+		setUp("/content/actingreel/en/home/noreferences");
+		
 		carousel.init(bindings);
 		List<String> actual = carousel.getItems();
 		assertNotNull(actual);
@@ -74,12 +86,8 @@ public class TestCarouselModel {
 	
 	@Test
 	public void testCorrectImages() {
-		currentPagePath = "/content/actingreel/en/home";
-		try {
-			setUpTest();
-		} catch (Exception e) {
-			fail(e.toString());
-		}
+		setUp("/content/actingreel/en/home");
+		
 		carousel.init(bindings);
 		List<String> expected = new ArrayList<String>();
 		expected.add("/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg");
@@ -93,12 +101,8 @@ public class TestCarouselModel {
 	
 	@Test
 	public void testOneImage() {
-		currentPagePath = "/content/actingreel/en/home/about";
-		try {
-			setUpTest();
-		} catch (Exception e) {
-			fail(e.toString());
-		}
+		setUp("/content/actingreel/en/home/about");
+
 		carousel.init(bindings);
 		List<String> expected = new ArrayList<String>();
 		expected.add("/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg");
@@ -108,5 +112,36 @@ public class TestCarouselModel {
 		assert(actual.contains(expected.get(0)));
 		
 	}
+	
+	@Test
+	public void testEmptyTrue() {
+	setUp("/content/actingreel/en/home/noreferences");
+	carousel.init(bindings);
+	assert(carousel.isEmpty());
+	}
+	
+	@Test
+	public void testEmptyFalseWithTwoImgs() {
+	setUp("/content/actingreel/en/home");
+	carousel.init(bindings);
+	assertFalse(carousel.isEmpty());
+	}
+	
+	@Test
+	public void testEmptyFalseWithOneImg() {
+	setUp("/content/actingreel/en/home/about");
+	carousel.init(bindings);
+	assert(!carousel.isEmpty());
+	}
+	
+	@Test
+	public void testIsNotEmptyAlternate() throws Exception {
+		
+		currentPagePath="/content/secondsite/hometwo";
+		setUpAlternate();
+		carousel.init(bindings);
+		assertEquals(false,carousel.isEmpty());
+	}
+	
 
 }

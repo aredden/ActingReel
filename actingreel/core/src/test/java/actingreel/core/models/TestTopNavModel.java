@@ -21,10 +21,10 @@ public class TestTopNavModel {
 	protected TopNavModel topnav;
 	
 	@Mock
-	protected Bindings bindings = mock(Bindings.class);
+	protected Bindings bindings;
 	
 	@Mock
-	SlingHttpServletRequest request = mock(SlingHttpServletRequest.class);
+	SlingHttpServletRequest request;
 	
 	@Rule
 	public AemContext ctx = new AemContext();
@@ -52,6 +52,7 @@ public class TestTopNavModel {
 	public void testGetRootNotNull() {
 		
 		currentPagePath = "/content/actingreel/en";
+		
 		try {
 			setUpTest();
 		} catch (Exception e) {

@@ -1,23 +1,23 @@
 {
-	"en":{
-	  "jcr:primaryType": "cq:Page",
-	  "jcr:content": {
-	    "jcr:primaryType": "cq:PageContent",
-	    "jcr:title": "English",
-	    "cq:template": "/apps/sample/templates/homepage",
-	    "sling:resourceType": "sample/components/homepage",
-	    "jcr:createdBy": "admin",
-	    "jcr:created": "Thu Aug 07 2014 16:32:59 GMT+0200",
-	    "root": {
-	      "jcr:primaryType": "nt:unstructured",
-	      "sling:resourceType": "wcm/foundation/components/responsivegrid",
-	      "carousel": {
-	        "jcr:primaryType": "nt:unstructured",
-	        "sling:resourceType": "actingreel/components/content/carousel"
-	      }
-	    }
+	"en": {
+		"jcr:primaryType": "cq:Page",
+		"jcr:content": {
+			"jcr:primaryType": "cq:PageContent",
+			"jcr:title": "English",
+			"cq:template": "/apps/sample/templates/homepage",
+			"sling:resourceType": "sample/components/homepage",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Thu Aug 07 2014 16:32:59 GMT+0200",
+			"root": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "wcm/foundation/components/responsivegrid",
+				"carousel": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "actingreel/components/content/carousel"
+				}
+			}
 		},
-		"home":{
+		"home": {
 			"jcr:primaryType": "cq:Page",
 			"jcr:content": {
 				"jcr:primaryType": "cq:PageContent",
@@ -32,19 +32,21 @@
 					"carousel": {
 						"jcr:primaryType": "nt:unstructured",
 						"sling:resourceType": "actingreel/components/content/carousel",
-						"image0":{
-							"jcr:title": "slide1",
-							"fileReference":"/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg"
-						},
-						"image1":{
-							"jcr:title": "slide1",
-							"fileReference":"/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860523.jpg"
+						"images": {
+							"image0": {
+								"title": "slide1",
+								"fileReference": "/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg"
+							},
+							"image1": {
+								"title": "slide1",
+								"fileReference": "/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860523.jpg"
+							}
 						}
 					}
 				}
 			},
-			"about":{
-			"jcr:primaryType": "cq:Page",
+			"about": {
+				"jcr:primaryType": "cq:Page",
 				"jcr:content": {
 					"jcr:primaryType": "cq:PageContent",
 					"jcr:title": "About",
@@ -58,16 +60,25 @@
 						"carousel": {
 							"jcr:primaryType": "nt:unstructured",
 							"sling:resourceType": "actingreel/components/content/carousel",
-							"image0":{
-								"jcr:title": "slide1",
-								"fileReference":"/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg"
+							"images": {
+								"image1": {
+									"title": "slide1",
+									"fileReference": "/content/dam/we-retail-client-app/mobile-app/screenshots/ios/screenshot-1477427860861.jpg"
+								}
+							},
+							"cq:responsive": {
+								"something": "somedata",
+								"default": {
+									"offset": "something",
+									"size": "something"
+								}
 							}
 						}
 					}
 				}
 			},
-			"noreferences":{
-			"jcr:primaryType": "cq:Page",
+			"noreferences": {
+				"jcr:primaryType": "cq:Page",
 				"jcr:content": {
 					"jcr:primaryType": "cq:PageContent",
 					"jcr:title": "About",
@@ -80,11 +91,237 @@
 						"sling:resourceType": "wcm/foundation/components/responsivegrid",
 						"carousel": {
 							"jcr:primaryType": "nt:unstructured",
-							"sling:resourceType": "actingreel/components/content/carousel"
-
+							"sling:resourceType": "actingreel/components/content/carousel",
+							"cq:responsive": {
+								"something": "somedata",
+								"default": {
+									"offset": "something",
+									"size": "something"
+								}
+							}
 						}
 					}
 				}
+			}
+		}
+	},
+	"hometwo": {
+		"jcr:primaryType": "cq:Page",
+		"jcr:createdBy": "admin",
+		"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+		"jcr:content": {
+			"jcr:primaryType": "cq:PageContent",
+			"jcr:createdBy": "admin",
+			"jcr:title": "HOME",
+			"cq:template": "/conf/actingreel/settings/wcm/templates/landing-page-template",
+			"jcr:created": "Sun Nov 24 2019 11:41:40 GMT-0500",
+			"cq:lastModified": "Fri Nov 29 2019 11:13:26 GMT-0500",
+			"sling:resourceType": "actingreel/components/structure/page",
+			"cq:lastModifiedBy": "admin",
+			"root": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "wcm/foundation/components/responsivegrid",
+				"responsivegrid": {
+					"jcr:primaryType": "nt:unstructured",
+					"jcr:createdBy": "admin",
+					"jcr:lastModifiedBy": "admin",
+					"jcr:created": "Mon Nov 18 2019 16:38:19 GMT-0500",
+					"jcr:lastModified": "Mon Nov 18 2019 16:38:24 GMT-0500",
+					"sling:resourceType": "wcm/foundation/components/responsivegrid",
+					"topnav": {
+						"jcr:primaryType": "nt:unstructured",
+						"jcr:createdBy": "admin",
+						"jcr:lastModifiedBy": "admin",
+						"jcr:created": "Mon Nov 18 2019 16:58:42 GMT-0500",
+						"parentPage": "/content/actingreel/en/home/about",
+						"jcr:lastModified": "Tue Nov 19 2019 11:09:01 GMT-0500",
+						"sling:resourceType": "actingreel/components/content/topnav"
+					},
+					"title": {
+						"jcr:primaryType": "nt:unstructured",
+						"jcr:createdBy": "admin",
+						"jcr:title": "Juliana Redden",
+						"jcr:lastModifiedBy": "admin",
+						"jcr:created": "Tue Nov 19 2019 12:57:42 GMT-0500",
+						"jcr:lastModified": "Tue Nov 26 2019 17:11:44 GMT-0500",
+						"sling:resourceType": "actingreel/components/content/title",
+						"cq:responsive": {
+							"jcr:primaryType": "nt:unstructured",
+							"default": {
+								"jcr:primaryType": "nt:unstructured",
+								"offset": "0",
+								"width": "12"
+							}
+						}
+					},
+					"carousel": {
+						"jcr:primaryType": "nt:unstructured",
+						"jcr:createdBy": "admin",
+						"jcr:lastModifiedBy": "admin",
+						"jcr:created": "Wed Nov 27 2019 13:45:47 GMT-0500",
+						"jcr:lastModified": "Fri Nov 29 2019 11:13:26 GMT-0500",
+						"sling:resourceType": "actingreel/components/content/carousel",
+						"cq:responsive": {
+							"jcr:primaryType": "nt:unstructured",
+							"default": {
+								"jcr:primaryType": "nt:unstructured",
+								"offset": "4",
+								"width": "4"
+							},
+							"medium": {
+								"jcr:primaryType": "nt:unstructured",
+								"offset": "3",
+								"width": "6"
+							},
+							"small": {
+								"jcr:primaryType": "nt:unstructured",
+								"offset": "2",
+								"width": "8"
+							},
+							"xsmall": {
+								"jcr:primaryType": "nt:unstructured",
+								"offset": "1",
+								"width": "10"
+							}
+						},
+						"images": {
+							"jcr:primaryType": "nt:unstructured",
+							"item0": {
+								"jcr:primaryType": "nt:unstructured",
+								"fileReference": "/content/dam/actingreel/carouselimages/jredden1.jpg",
+								"title": "Nice"
+							},
+							"item1": {
+								"jcr:primaryType": "nt:unstructured",
+								"fileReference": "/content/dam/actingreel/carouselimages/jredden2.jpg",
+								"title": "Great"
+							},
+							"item2": {
+								"jcr:primaryType": "nt:unstructured",
+								"fileReference": "/content/dam/actingreel/carouselimages/jredden3.jpg",
+								"title": "Incredible"
+							}
+						}
+					},
+					"text": {
+						"jcr:primaryType": "nt:unstructured",
+						"jcr:createdBy": "admin",
+						"jcr:lastModifiedBy": "admin",
+						"jcr:created": "Tue Nov 19 2019 12:58:47 GMT-0500",
+						"text": "<h2 style=\"text-align: center;\">&nbsp;<\/h2>\n<h2 style=\"text-align: center;\"><b>LA based actress<\/b><\/h2>\n<h2 style=\"text-align: center;\">&nbsp;<\/h2>\n",
+						"jcr:lastModified": "Wed Nov 27 2019 12:57:23 GMT-0500",
+						"sling:resourceType": "actingreel/components/content/text",
+						"textIsRich": "true"
+					}
+				}
+			}
+		},
+		"actingreel": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "ACTING REEL",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Thu Nov 28 2019 11:16:09 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin",
+				"root": {
+					"jcr:primaryType": "nt:unstructured",
+					"responsivegrid": {
+						"jcr:primaryType": "nt:unstructured",
+						"sling:resourceType": "wcm/foundation/components/responsivegrid",
+						"carousel_1620873733": {
+							"jcr:primaryType": "nt:unstructured",
+							"jcr:createdBy": "admin",
+							"jcr:lastModifiedBy": "admin",
+							"jcr:created": "Thu Nov 28 2019 11:03:28 GMT-0500",
+							"jcr:lastModified": "Thu Nov 28 2019 11:16:09 GMT-0500",
+							"sling:resourceType": "actingreel/components/content/carousel",
+							"images": {
+								"jcr:primaryType": "nt:unstructured"
+							}
+						}
+					}
+				}
+			}
+		},
+		"work": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "WORK",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Mon Nov 18 2019 16:41:51 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin"
+			}
+		},
+		"resume": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "RESUME",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Mon Nov 18 2019 16:42:12 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin"
+			}
+		},
+		"socialmedia": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "SOCIAL MEDIA",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Mon Nov 18 2019 16:42:45 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin"
+			}
+		},
+		"about": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "ABOUT",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Mon Nov 18 2019 16:43:11 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin"
+			}
+		},
+		"modeling": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:createdBy": "admin",
+			"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+			"jcr:content": {
+				"jcr:primaryType": "cq:PageContent",
+				"jcr:createdBy": "admin",
+				"jcr:title": "MODELING",
+				"cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+				"jcr:created": "Sat Nov 23 2019 13:47:31 GMT-0500",
+				"cq:lastModified": "Mon Nov 18 2019 16:43:29 GMT-0500",
+				"sling:resourceType": "actingreel/components/structure/page",
+				"cq:lastModifiedBy": "admin"
 			}
 		}
 	}

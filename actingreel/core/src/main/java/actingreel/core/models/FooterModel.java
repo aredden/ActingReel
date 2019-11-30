@@ -1,10 +1,11 @@
-package apps.actingreel.components.content.footer;
+package actingreel.core.models;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 
-public class Footer extends WCMUsePojo{
+public class FooterModel extends WCMUsePojo{
 
 	private String text;
+	
 	@Override
 	public void activate() throws Exception {
 		
@@ -15,5 +16,6 @@ public class Footer extends WCMUsePojo{
 	public String getFooterText(){
 		return text;
 	}
+	
 	
 }

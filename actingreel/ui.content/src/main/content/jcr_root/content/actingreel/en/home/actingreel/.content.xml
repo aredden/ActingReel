@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-11-18T16:41:33.340-05:00"
+        cq:lastModified="{Date}2019-11-28T11:16:09.732-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/acting-reel-content-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="ACTING REEL"
-        sling:resourceType="actingreel/components/structure/page"/>
+        sling:resourceType="actingreel/components/structure/page">
+        <root jcr:primaryType="nt:unstructured">
+            <responsivegrid
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+                <carousel_1620873733
+                    jcr:created="{Date}2019-11-28T11:03:28.683-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-11-28T11:16:09.730-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="actingreel/components/content/carousel">
+                    <images jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            fileReference="/content/dam/actingreel/homecarouselimages/jredden1.jpg"
+                            title="Happy"/>
+                    </images>
+                </carousel_1620873733>
+            </responsivegrid>
+        </root>
+    </jcr:content>
 </jcr:root>

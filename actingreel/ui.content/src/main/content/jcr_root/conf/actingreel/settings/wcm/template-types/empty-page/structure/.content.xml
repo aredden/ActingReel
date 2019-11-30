@@ -10,13 +10,21 @@
             sling:resourceType="wcm/foundation/components/responsivegrid"/>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
-                <phone
+                <xsmall
                     jcr:primaryType="nt:unstructured"
-                    title="Smaller Screen"
-                    width="{Long}650"/>
-                <tablet
+                    title="XSmall"
+                    width="{Long}576"/>
+                <small
                     jcr:primaryType="nt:unstructured"
-                    title="Tablet"
+                    title="Small"
+                    width="{Long}768"/>
+                <medium
+                    jcr:primaryType="nt:unstructured"
+                    title="Medium"
+                    width="{Long}992"/>
+                <large
+                    jcr:primaryType="nt:unstructured"
+                    title="Large"
                     width="{Long}1200"/>
             </breakpoints>
         </cq:responsive>
