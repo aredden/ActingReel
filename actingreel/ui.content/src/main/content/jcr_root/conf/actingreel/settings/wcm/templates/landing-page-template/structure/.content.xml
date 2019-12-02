@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-11-25T15:20:39.940-05:00"
+        cq:lastModified="{Date}2019-12-02T13:05:35.058-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
@@ -39,6 +39,13 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Adaptive Form Footer"
                 sling:resourceType="fd/af/components/guidefooter"/>
+            <video
+                jcr:created="{Date}2019-12-02T12:57:52.123-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-12-02T13:05:35.035-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="actingreel/components/content/video"/>
             <footer
                 jcr:created="{Date}2019-11-21T16:45:48.355-05:00"
                 jcr:createdBy="admin"

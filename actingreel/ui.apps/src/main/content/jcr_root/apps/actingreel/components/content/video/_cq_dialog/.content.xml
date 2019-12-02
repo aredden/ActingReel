@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root 
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content 
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/container">
+        <layout
+        	sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+            jcr:primaryType="nt:unstructured">
+        </layout>
+        <items
+            jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/container">
+                <items
+                    jcr:primaryType="nt:unstructured">
+                    <text
+                    jcr:primaryType="nt:unstructured"
+                    FieldLabel="Video id"
+                    Name="./jcr:videoid"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield">
+                    
+                    </text>
+                    <well
+                    jcr:primaryType="nt:unstructured">
+                    	<layout
+                    	jcr:primaryType="nt:unstructured">
+                    	
+                    	</layout>
+                    	<items
+                    	jcr:primaryType="nt:unstructured">
+                    		<statictext
+                    		jcr:primaryType="nt:unstructured">
+                    		
+                    		</statictext>
+                    		<browse
+                    		jcr:primaryType="nt:unstructured">
+                    		
+                    		</browse>
+                    		<enablesort
+                    		jcr:primaryType="nt:unstructured">
+                    		
+                    		</enablesort>
+                    		<facebook
+                    		jcr:primaryType="nt:unstructured">
+                    		
+                    		</facebook>
+                    	</items>
+                    </well>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

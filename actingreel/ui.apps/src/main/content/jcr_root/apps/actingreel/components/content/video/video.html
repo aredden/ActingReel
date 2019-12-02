@@ -1,0 +1,40 @@
+<!-- <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" data-sly-call="${clientlib.all @ categories='youtubecss.comp'}"/> -->
+
+ 
+<!-- /* YouTube Component */ -->
+ 
+<h1> Youtube Video </h1>
+<sly data-sly-use.hello="actingreel.core.models.VideoModel" />
+	<div class="embed-responsive embed-responsive-4by3">
+		${hello.YoutubeObj.videohtml @ context='html'}
+	</div>
+<br/>
+
+<div class="panel">
+	<p> 
+		${hello.YoutubeObj.video_author_name}
+	</p>
+</div>
+
+<div class="panel">
+	<p> 
+		${hello.YoutubeObj.videotitle}
+	</p>
+</div>
+ 
+<!-- /* Checkbox code to check if link needs to open in new tab. */ -->
+<hr>
+<div><a target='${properties.isChecked ? "_blank" : "_self"}' href="${properties.path @ extension = 'html'}">${properties.name}</a>
+</div>
+<hr>
+<!-- /* Code to check if link entered in path in Dialog */ -->
+ 
+<div data-sly-test.socialshare="${properties.social1}">
+<A HREF="${properties.social1}"  title="Facebook" width="50px" target="_blank"><img src="/content/dam/YouTubeComponent/png-facebook-icon-194.jpg"  alt="Facebook" ></A>
+</div>
+ 
+<!-- /* Code if link is not given in dialog then hide it from front end */ -->
+ 
+<div data-sly-test="${!socialshare}">
+<A data-sly-test="${''}" HREF="${properties.social1}"  title="Facebook" target="_blank"><img src="/content/dam/YouTubeComponent/png-facebook-icon-194.jpg"  alt="Facebook" ></A> 
+</div>
