@@ -26,6 +26,9 @@
                     jcr:primaryType="nt:unstructured"
                     title="Large"
                     width="{Long}1200"/>
+                <default
+                    jcr:primaryType="nt:unstructured"
+                    width="1200"/>
             </breakpoints>
         </cq:responsive>
     </jcr:content>

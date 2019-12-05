@@ -2,30 +2,99 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-11-28T11:16:09.732-05:00"
+        cq:lastModified="{Date}2019-12-05T13:26:48.330-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/acting-reel-content-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="ACTING REEL"
         sling:resourceType="actingreel/components/structure/page">
-        <root jcr:primaryType="nt:unstructured">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid">
             <responsivegrid
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid">
-                <carousel_1620873733
-                    jcr:created="{Date}2019-11-28T11:03:28.683-05:00"
+                <responsivegrid
+                    jcr:created="{Date}2019-12-04T10:40:09.187-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-11-28T11:16:09.730-05:00"
+                    jcr:lastModified="{Date}2019-12-04T10:40:09.187-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="actingreel/components/content/carousel">
-                    <images jcr:primaryType="nt:unstructured">
-                        <item0
-                            jcr:primaryType="nt:unstructured"
-                            fileReference="/content/dam/actingreel/homecarouselimages/jredden1.jpg"
-                            title="Happy"/>
-                    </images>
-                </carousel_1620873733>
+                    sling:resourceType="wcm/foundation/components/responsivegrid">
+                    <videocontainer
+                        jcr:created="{Date}2019-12-04T11:00:41.496-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-04T11:52:06.430-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="actingreel/components/content/videocontainer">
+                        <videos jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                videoDesc="asdfasdf"
+                                videoUrl="BQe-TgQdFzw"/>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                videoDesc="fffffff"
+                                videoUrl="https://www.youtube.com/watch?v=OO9irWogFW0"/>
+                        </videos>
+                        <cq:responsive jcr:primaryType="nt:unstructured">
+                            <default
+                                jcr:primaryType="nt:unstructured"
+                                offset="1"
+                                width="5"/>
+                            <medium
+                                jcr:primaryType="nt:unstructured"
+                                offset="3"
+                                width="6"/>
+                            <small
+                                jcr:primaryType="nt:unstructured"
+                                offset="2"
+                                width="8"/>
+                            <xsmall
+                                jcr:primaryType="nt:unstructured"
+                                offset="1"
+                                width="10"/>
+                        </cq:responsive>
+                    </videocontainer>
+                    <videocontainer_298485271
+                        jcr:created="{Date}2019-12-05T13:19:07.169-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-05T13:21:40.683-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="actingreel/components/content/videocontainer"
+                        cols="2">
+                        <videos jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                videoDesc="so"
+                                videoUrl="https://www.youtube.com/watch?v=DT3SInHr9ck"/>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                videoDesc="cooling"
+                                videoUrl="https://www.youtube.com/watch?v=w0H3NI89unA"/>
+                        </videos>
+                        <cq:responsive jcr:primaryType="nt:unstructured">
+                            <default
+                                jcr:primaryType="nt:unstructured"
+                                offset="0"
+                                width="5"/>
+                            <medium
+                                jcr:primaryType="nt:unstructured"
+                                offset="3"
+                                width="6"/>
+                            <small
+                                jcr:primaryType="nt:unstructured"
+                                offset="2"
+                                width="8"/>
+                            <xsmall
+                                jcr:primaryType="nt:unstructured"
+                                offset="1"
+                                width="10"/>
+                        </cq:responsive>
+                    </videocontainer_298485271>
+                </responsivegrid>
             </responsivegrid>
         </root>
     </jcr:content>

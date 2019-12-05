@@ -1,0 +1,19 @@
+<div data-sly-use.videos="actingreel.core.models.VideoContainerModel" >
+	<div data-sly-list="${videos.items}">
+		<div class="card bg-dark text-center text-white p-2 m-1">
+		
+			<div class="embed-responsive embed-responsive-16by9">
+				${item.videohtml @ context='html'}
+			</div>
+		    <div class="card-body">
+		    	<h5 class="card-title">${item.video_author_name}</h5>
+		    	<p class="card-text">${item.videotitle}</p>
+		  	</div>
+		</div>
+		<br/>
+	</div>
+</div>
+
+<div data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+</div>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=true}"></sly>

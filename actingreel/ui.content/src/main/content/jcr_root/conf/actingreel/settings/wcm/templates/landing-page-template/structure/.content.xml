@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2019-12-02T13:05:35.058-05:00"
+        cq:lastModified="{Date}2019-12-02T16:29:05.586-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/actingreel/settings/wcm/templates/landing-page-template"
         jcr:primaryType="cq:PageContent"
@@ -45,7 +45,14 @@
                 jcr:lastModified="{Date}2019-12-02T13:05:35.035-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="actingreel/components/content/video"/>
+                sling:resourceType="actingreel/components/content/video">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="2"
+                        width="8"/>
+                </cq:responsive>
+            </video>
             <footer
                 jcr:created="{Date}2019-11-21T16:45:48.355-05:00"
                 jcr:createdBy="admin"
@@ -74,6 +81,9 @@
                     jcr:primaryType="nt:unstructured"
                     title="Large"
                     width="{Long}1200"/>
+                <default
+                    jcr:primaryType="nt:unstructured"
+                    width="1200"/>
             </breakpoints>
         </cq:responsive>
     </jcr:content>

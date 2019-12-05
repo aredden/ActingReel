@@ -6,6 +6,7 @@ public class YouTubeData
   private String videoid;
   private String videotitle;
   private String video_author_name;
+  private String video_description;
    
   public String getVideoid()
   {
@@ -45,5 +46,15 @@ public class YouTubeData
   public void setVideohtml(String videohtml)
   {
     this.videohtml = videohtml;
+  }
+  
+  public String getVideo_description() 
+  {
+	  return this.video_description;
+  }
+  
+  public void setVideo_description(String video_description)
+  {
+	 this.video_description = video_description;
   }
 }

@@ -1,0 +1,265 @@
+{
+	"home":{
+	  "jcr:primaryType": "cq:Page",
+	  "jcr:createdBy": "admin",
+	  "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	  "jcr:content": {
+	    "jcr:primaryType": "cq:PageContent",
+	    "jcr:createdBy": "admin",
+	    "jcr:title": "HOME",
+	    "cq:template": "/conf/actingreel/settings/wcm/templates/landing-page-template",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "cq:lastModified": "Sat Nov 30 2019 16:12:35 GMT-0500",
+	    "sling:resourceType": "actingreel/components/structure/page",
+	    "cq:lastModifiedBy": "admin",
+	    "root": {
+	      "jcr:primaryType": "nt:unstructured",
+	      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+	      "responsivegrid": {
+	        "jcr:primaryType": "nt:unstructured",
+	        "jcr:createdBy": "admin",
+	        "jcr:lastModifiedBy": "admin",
+	        "jcr:created": "Mon Nov 18 2019 16:38:19 GMT-0500",
+	        "jcr:lastModified": "Mon Nov 18 2019 16:38:24 GMT-0500",
+	        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+	        "topnav": {
+	          "jcr:primaryType": "nt:unstructured",
+	          "jcr:createdBy": "admin",
+	          "jcr:lastModifiedBy": "admin",
+	          "jcr:created": "Mon Nov 18 2019 16:58:42 GMT-0500",
+	          "parentPage": "/content/actingreel/en/home/about",
+	          "jcr:lastModified": "Tue Nov 19 2019 11:09:01 GMT-0500",
+	          "sling:resourceType": "actingreel/components/content/topnav"
+	        },
+	        "title": {
+	          "jcr:primaryType": "nt:unstructured",
+	          "jcr:createdBy": "admin",
+	          "jcr:title": "Juliana Redden",
+	          "jcr:lastModifiedBy": "admin",
+	          "jcr:created": "Tue Nov 19 2019 12:57:42 GMT-0500",
+	          "jcr:lastModified": "Tue Nov 26 2019 17:11:44 GMT-0500",
+	          "sling:resourceType": "actingreel/components/content/title",
+	          "cq:responsive": {
+	            "jcr:primaryType": "nt:unstructured",
+	            "default": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "offset": "0",
+	              "width": "12"
+	            }
+	          }
+	        },
+	        "carousel": {
+	          "jcr:primaryType": "nt:unstructured",
+	          "jcr:createdBy": "admin",
+	          "jcr:lastModifiedBy": "admin",
+	          "jcr:created": "Wed Nov 27 2019 13:45:47 GMT-0500",
+	          "jcr:lastModified": "Sat Nov 30 2019 16:12:35 GMT-0500",
+	          "sling:resourceType": "actingreel/components/content/carousel",
+	          "cq:responsive": {
+	            "jcr:primaryType": "nt:unstructured",
+	            "default": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "offset": "4",
+	              "width": "4"
+	            },
+	            "medium": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "offset": "3",
+	              "width": "6"
+	            },
+	            "small": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "offset": "2",
+	              "width": "8"
+	            },
+	            "xsmall": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "offset": "1",
+	              "width": "10"
+	            }
+	          },
+	          "images": {
+	            "jcr:primaryType": "nt:unstructured",
+	            "item0": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "fileReference": "/content/dam/actingreel/carouselimages/jredden1.jpg",
+	              "title": "Nice"
+	            },
+	            "item1": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "fileReference": "/content/dam/actingreel/carouselimages/jredden2.jpg",
+	              "title": "Great"
+	            },
+	            "item2": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "fileReference": "/content/dam/actingreel/carouselimages/jredden3.jpg",
+	              "title": "Incredible"
+	            }
+	          }
+	        },
+	        "text": {
+	          "jcr:primaryType": "nt:unstructured",
+	          "jcr:createdBy": "admin",
+	          "jcr:lastModifiedBy": "admin",
+	          "jcr:created": "Tue Nov 19 2019 12:58:47 GMT-0500",
+	          "text": "<h2 style=\"text-align: center;\">&nbsp;</h2>\n<h2 style=\"text-align: center;\"><b>LA based actress</b></h2>\n<h2 style=\"text-align: center;\">&nbsp;</h2>\n",
+	          "jcr:lastModified": "Wed Nov 27 2019 12:57:23 GMT-0500",
+	          "sling:resourceType": "actingreel/components/content/text",
+	          "textIsRich": "true"
+	        }
+	      }
+	    }
+	  },
+	  "actingreel": {
+	    "jcr:primaryType": "cq:Page",
+	    "jcr:createdBy": "admin",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "jcr:content": {
+	      "jcr:primaryType": "cq:PageContent",
+	      "jcr:createdBy": "admin",
+	      "jcr:title": "ACTING REEL",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	      "cq:lastModified": "Tue Dec 03 2019 13:26:24 GMT-0500",
+	      "sling:resourceType": "actingreel/components/structure/page",
+	      "cq:lastModifiedBy": "admin",
+	      "root": {
+	        "jcr:primaryType": "nt:unstructured",
+	        "responsivegrid": {
+	          "jcr:primaryType": "nt:unstructured",
+	          "sling:resourceType": "wcm/foundation/components/responsivegrid",
+	          "videocontainer": {
+	            "jcr:primaryType": "nt:unstructured",
+	            "jcr:createdBy": "admin",
+	            "jcr:lastModifiedBy": "admin",
+	            "jcr:created": "Tue Dec 03 2019 12:30:30 GMT-0500",
+	            "cols": "1",
+	            "jcr:lastModified": "Tue Dec 03 2019 13:26:24 GMT-0500",
+	            "sling:resourceType": "actingreel/components/content/videocontainer",
+	            "videos": {
+	              "jcr:primaryType": "nt:unstructured",
+	              "item0": {
+	                "jcr:primaryType": "nt:unstructured",
+	                "videoUrl": "https://www.youtube.com/watch?v=OO9irWogFW0",
+	                "videoDesc": "A really great video I made about life"
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  },
+	  "work": {
+		  "jcr:primaryType": "cq:Page",
+		  "jcr:createdBy": "admin",
+		  "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+		  "jcr:content": {
+		    "jcr:primaryType": "cq:PageContent",
+		    "jcr:createdBy": "admin",
+		    "jcr:title": "WORK",
+		    "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+		    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+		    "cq:lastModified": "Wed Dec 04 2019 10:07:57 GMT-0500",
+		    "sling:resourceType": "actingreel/components/structure/page",
+		    "cq:lastModifiedBy": "admin",
+		    "root": {
+		      "jcr:primaryType": "nt:unstructured",
+		      "responsivegrid": {
+		        "jcr:primaryType": "nt:unstructured",
+		        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+		        "videocontainer": {
+		          "jcr:primaryType": "nt:unstructured",
+		          "jcr:createdBy": "admin",
+		          "jcr:lastModifiedBy": "admin",
+		          "jcr:created": "Tue Dec 03 2019 12:30:30 GMT-0500",
+		          "cols": "1",
+		          "jcr:lastModified": "Wed Dec 04 2019 10:07:57 GMT-0500",
+		          "sling:resourceType": "actingreel/components/content/videocontainer",
+		          "videos": {
+		            "jcr:primaryType": "nt:unstructured",
+		            "item0": {
+		              "jcr:primaryType": "nt:unstructured",
+		              "videoUrl": "https://www.youtube.com/watch?v=OO9irWogFW0",
+		              "videoDesc": "A really great video I made about life"
+		            },
+		            "item1": {
+		              "jcr:primaryType": "nt:unstructured",
+		              "videoUrl": "https://www.youtube.com/watch?v=BQe-TgQdFzw",
+		              "videoDesc": "A wonderful 5G network is great."
+		            }
+		          }
+		        },
+		        "video": {
+		          "jcr:primaryType": "nt:unstructured",
+		          "jcr:createdBy": "admin",
+		          "jcr:lastModifiedBy": "admin",
+		          "jcr:created": "Tue Dec 03 2019 14:48:45 GMT-0500",
+		          "jcr:lastModified": "Tue Dec 03 2019 15:00:46 GMT-0500",
+		          "sling:resourceType": "actingreel/components/content/video"
+		        }
+		      }
+		    }
+		  }
+		},
+	  "resume": {
+	    "jcr:primaryType": "cq:Page",
+	    "jcr:createdBy": "admin",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "jcr:content": {
+	      "jcr:primaryType": "cq:PageContent",
+	      "jcr:createdBy": "admin",
+	      "jcr:title": "RESUME",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	      "cq:lastModified": "Mon Nov 18 2019 16:42:12 GMT-0500",
+	      "sling:resourceType": "actingreel/components/structure/page",
+	      "cq:lastModifiedBy": "admin"
+	    }
+	  },
+	  "socialmedia": {
+	    "jcr:primaryType": "cq:Page",
+	    "jcr:createdBy": "admin",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "jcr:content": {
+	      "jcr:primaryType": "cq:PageContent",
+	      "jcr:createdBy": "admin",
+	      "jcr:title": "SOCIAL MEDIA",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	      "cq:lastModified": "Mon Nov 18 2019 16:42:45 GMT-0500",
+	      "sling:resourceType": "actingreel/components/structure/page",
+	      "cq:lastModifiedBy": "admin"
+	    }
+	  },
+	  "about": {
+	    "jcr:primaryType": "cq:Page",
+	    "jcr:createdBy": "admin",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "jcr:content": {
+	      "jcr:primaryType": "cq:PageContent",
+	      "jcr:createdBy": "admin",
+	      "jcr:title": "ABOUT",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	      "cq:lastModified": "Mon Nov 18 2019 16:43:11 GMT-0500",
+	      "sling:resourceType": "actingreel/components/structure/page",
+	      "cq:lastModifiedBy": "admin"
+	    }
+	  },
+	  "modeling": {
+	    "jcr:primaryType": "cq:Page",
+	    "jcr:createdBy": "admin",
+	    "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	    "jcr:content": {
+	      "jcr:primaryType": "cq:PageContent",
+	      "jcr:createdBy": "admin",
+	      "jcr:title": "MODELING",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
+	      "cq:lastModified": "Mon Nov 18 2019 16:43:29 GMT-0500",
+	      "sling:resourceType": "actingreel/components/structure/page",
+	      "cq:lastModifiedBy": "admin"
+	    }
+	  }
+	}
+}
