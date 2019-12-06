@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import static actingreel.core.constants.Constants.*;
 
@@ -18,7 +19,7 @@ public class VideoUtils {
 	// Requests data from Youtube in JSON format.
 	public static String getYoutubeJSON(String videoid){
 	    try {
-	      DefaultHttpClient httpClient = new DefaultHttpClient();
+	      CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 	      HttpGet getRequest = new HttpGet(YT_EMBED_PREFIX + videoid + "&format=json");
 		  getRequest.addHeader("accept", "application/json");
 		  HttpResponse response = httpClient.execute(getRequest);
@@ -32,7 +33,7 @@ public class VideoUtils {
 		  while ((output = br.readLine()) != null) {
 		    myJSON = myJSON + output;
 		  }
-	      httpClient.getConnectionManager().shutdown();
+	      httpClient.close();
 	      return myJSON;
 	    }
 	    catch (Exception e) {

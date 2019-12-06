@@ -17,7 +17,8 @@ import org.apache.http.HttpResponse;
 //import org.apache.http.StatusLine;
 import org.apache.http.client.methods.HttpGet;
 //import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 //import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,8 +60,7 @@ public class VideoModel
   {
     try
     {
-      DefaultHttpClient httpClient = new DefaultHttpClient();
-       
+      CloseableHttpClient httpClient = HttpClientBuilder.create().build();
       HttpGet getRequest = new HttpGet("https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=" + videoid + "&format=json");
       getRequest.addHeader("accept", "application/json");
        
@@ -79,7 +79,7 @@ public class VideoModel
         myJSON = myJSON + output;
       }
       log.info("**** Myjson: " + myJSON);
-      httpClient.getConnectionManager().shutdown();
+      httpClient.close();
        
       return myJSON;
     }
