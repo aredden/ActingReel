@@ -67,7 +67,7 @@ public class TestVideoContainerModel {
 	}
 	
 	@Test
-	public void testItems() {
+	public void testOneItemWithSecondEmptyURL() {
 		currentPagePath="/content/en/home/actingreel";
 		try {
 			setUp();

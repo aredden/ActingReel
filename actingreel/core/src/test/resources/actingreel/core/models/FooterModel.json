@@ -106,7 +106,16 @@
 	          "jcr:lastModified": "Wed Nov 27 2019 12:57:23 GMT-0500",
 	          "sling:resourceType": "actingreel/components/content/text",
 	          "textIsRich": "true"
-	        }
+	        },
+	        "footer": {
+			  "jcr:primaryType": "nt:unstructured",
+			  "jcr:createdBy": "admin",
+			  "jcr:lastModifiedBy": "admin",
+			  "jcr:created": "Thu Nov 21 2019 17:02:14 GMT-0500",
+			  "jcr:lastModified": "Thu Nov 21 2019 18:07:40 GMT-0500",
+			  "sling:resourceType": "actingreel/components/content/footer",
+			  "footerText": "All rights reserved Juliana Redden (tm) 2019 2020"
+			}
 	      }
 	    }
 	  },
@@ -142,14 +151,18 @@
 	                "jcr:primaryType": "nt:unstructured",
 	                "videoUrl": "https://www.youtube.com/watch?v=OO9irWogFW0",
 	                "videoDesc": "A really great video I made about life"
-	              },
-	              "item1": {
-	              	"jcr:primaryType": "nt:unstructured",
-	                "videoUrl": "",
-	                "videoDesc": "A really great video I made about life"
 	              }
 	            }
-	          }
+	          },
+		        "footer": {
+				  "jcr:primaryType": "nt:unstructured",
+				  "jcr:createdBy": "admin",
+				  "jcr:lastModifiedBy": "admin",
+				  "jcr:created": "Thu Nov 21 2019 17:02:14 GMT-0500",
+				  "jcr:lastModified": "Thu Nov 21 2019 18:07:40 GMT-0500",
+				  "sling:resourceType": "actingreel/components/content/footer",
+				  "footerText": "All rights reserved Juliana Redden (tm) 2019 2020"
+				}
 	        }
 	      }
 	    }
@@ -201,7 +214,16 @@
 		          "jcr:created": "Tue Dec 03 2019 14:48:45 GMT-0500",
 		          "jcr:lastModified": "Tue Dec 03 2019 15:00:46 GMT-0500",
 		          "sling:resourceType": "actingreel/components/content/video"
-		        }
+		        },
+		        "footer": {
+				  "jcr:primaryType": "nt:unstructured",
+				  "jcr:createdBy": "admin",
+				  "jcr:lastModifiedBy": "admin",
+				  "jcr:created": "Thu Nov 21 2019 17:02:14 GMT-0500",
+				  "jcr:lastModified": "Thu Nov 21 2019 18:07:40 GMT-0500",
+				  "sling:resourceType": "actingreel/components/content/footer",
+				  "footerText": "All rights reserved Juliana Redden (tm) 2019 2020"
+				}
 		      }
 		    }
 		  }

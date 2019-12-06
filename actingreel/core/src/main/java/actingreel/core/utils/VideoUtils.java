@@ -12,6 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import static actingreel.core.constants.Constants.*;
 import static actingreel.core.constants.Util.*;
+
 public class VideoUtils {
 
 	// Requests data from Youtube in JSON format.

@@ -19,7 +19,7 @@ import static actingreel.core.utils.VideoUtils.getYoutubeJSON;
 import actingreel.core.models.objects.YouTubeData;
 
 public class VideoContainerModel extends WCMUsePojo {
-
+	
 	// Class helper variables.
 	private List<String> videoUrls;
 	private ArrayList<HashMap<String,String>> dataWithDescription;
@@ -72,11 +72,11 @@ public class VideoContainerModel extends WCMUsePojo {
 			
 			HashMap<String, String> map = new HashMap<String,String>();
 			
-			String videoUrl = videoMap.get(VIDEO_URL,"");
-			String videoDescription = videoMap.get(VIDEO_DESC,"");
+			String videoUrl = videoMap.get(VIDEO_URL,EMPTY_STRING);
+			String videoDescription = videoMap.get(VIDEO_DESC,EMPTY_STRING);
 
 			// Only populate dataWithDescription if there is a video URL
-			if(!(videoUrl == null) && !(videoUrl == "")) {
+			if(!(videoUrl.equals(EMPTY_STRING))) {
 
 				videoUrls.add(videoUrl);
 				
@@ -90,7 +90,7 @@ public class VideoContainerModel extends WCMUsePojo {
 		// Iterate through video URLs and extract video ID from full URL.
 		for(HashMap<String, String> x : dataWithDescription) {
 			String url = x.get(VIDEO);
-			if(url.contains("?v=")) {
+			if(url.contains(VIDEO_IDENTIFIER)) {
 				String id = extractYTId(url);
 				
 				LOGGER.info("**** YoutubeId: "+id);
@@ -111,14 +111,14 @@ public class VideoContainerModel extends WCMUsePojo {
 			YouTubeData youtubeObj = new YouTubeData();
 		    
 				// Remove extra '\"'s from HTML JSON string.
-				String htmlString = youtubeJson.get("html").toString().replace("\\\"", "");
+				String htmlString = youtubeJson.get(HTML).toString().replace(HTML_VIDEO_TARGET, EMPTY_STRING);
 			    
 				// Set YouTubeData object fields.
 				youtubeObj.setVideoid(videoid);
-			    youtubeObj.setVideotitle(youtubeJson.get("title").getAsString());
-			    youtubeObj.setVideo_author_name(youtubeJson.get("author_name").getAsString());
+			    youtubeObj.setVideotitle(youtubeJson.get(TITLE).getAsString());
+			    youtubeObj.setVideo_author_name(youtubeJson.get(AUTHOR_NAME).getAsString());
 			    youtubeObj.setVideohtml(htmlString.substring(1,htmlString.length()-1));
-			    youtubeObj.setVideo_description(x.get("description"));
+			    youtubeObj.setVideo_description(x.get(DESCRIPTION));
 			    
 			    // Add YouTubeData object to class variable that is instance of List<YouTubeData>.
 			    youtubeData.add(youtubeObj);
