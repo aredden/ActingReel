@@ -11,17 +11,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import static actingreel.core.constants.Constants.*;
-
+import static actingreel.core.constants.Util.*;
 public class VideoUtils {
 
-
-	
 	// Requests data from Youtube in JSON format.
 	public static String getYoutubeJSON(String videoid){
 	    try {
 	      CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-	      HttpGet getRequest = new HttpGet(YT_EMBED_PREFIX + videoid + "&format=json");
-		  getRequest.addHeader("accept", "application/json");
+	      HttpGet getRequest = new HttpGet(YT_EMBED_PREFIX + videoid + HTTP_FORMAT_JSON);
+		  getRequest.addHeader(ACCEPT, ACCEPT_TYPE_JSON);
 		  HttpResponse response = httpClient.execute(getRequest);
 		  
 		  if (response.getStatusLine().getStatusCode() != 200){
@@ -49,7 +47,7 @@ public class VideoUtils {
 	    if(matcher.find()){
 	        return matcher.group();
 	    } else {
-	        return "error";  
+	        return ERROR;  
 	    }
 	}
 	

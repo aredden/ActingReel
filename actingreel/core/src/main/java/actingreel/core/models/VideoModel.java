@@ -11,15 +11,11 @@ import actingreel.core.models.objects.YouTubeData;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import javax.jcr.Node;
-//import javax.jcr.Property;
-//import org.apache.http.HttpEntity;
+
 import org.apache.http.HttpResponse;
-//import org.apache.http.StatusLine;
 import org.apache.http.client.methods.HttpGet;
-//import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-//import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
  
