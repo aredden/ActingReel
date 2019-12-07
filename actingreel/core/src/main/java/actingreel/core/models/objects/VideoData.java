@@ -1,6 +1,6 @@
 package actingreel.core.models.objects;
 
-public class YouTubeData
+public class VideoData
 {
   private String videohtml;
   private String videoid;

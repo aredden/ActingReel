@@ -37,7 +37,7 @@ public class TestCarouselModel {
 	private String currentPagePath;
 	
 	public void setUpAlternate() throws Exception{
-		ctx.load().json("/actingreel/core/models/CarouselModel.json","/content/secondsite");
+		ctx.load().json("/actingreel/core/models/Carousel.json","/content/secondsite");
 		carousel = new CarouselModel();
 		
 		
@@ -47,7 +47,7 @@ public class TestCarouselModel {
 	}
 	
 	public void setUpTest() throws Exception {
-		ctx.load().json("/actingreel/core/models/CarouselModel.json","/content/actingreel");
+		ctx.load().json("/actingreel/core/models/Carousel.json","/content/actingreel");
 		carousel = new CarouselModel();
 		
 		when(bindings.get("resource"))

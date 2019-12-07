@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.*;
 
-import actingreel.core.models.objects.YouTubeData;
+import actingreel.core.models.objects.VideoData;
 
 import static org.mockito.Mockito.*;
 
@@ -38,7 +38,7 @@ public class TestVideoContainerModel {
 	
 	private String currentPagePath;
 	
-	static Logger logger = LoggerFactory.getLogger(TestVideoContainerModel.class);
+	static Logger LOGGER = LoggerFactory.getLogger(TestVideoContainerModel.class);
 	
 	public void setUp() throws Exception{
 		ctx.load().json("/actingreel/core/models/VideoContainer.json","/content/en");
@@ -75,9 +75,9 @@ public class TestVideoContainerModel {
 			fail(e.toString());
 		}
 		videoContainer.init(bindings);
-		List<YouTubeData> youtubeData = videoContainer.getItems();
+		List<VideoData> youtubeData = videoContainer.getItems();
 		assertEquals(1,youtubeData.size());
-		YouTubeData actual = youtubeData.get(0);
+		VideoData actual = youtubeData.get(0);
 		assertEquals(actual.getVideoid(), "OO9irWogFW0");
 		assert(actual.getVideohtml().contains("www.youtube.com/embed/OO9irWogFW0"));
 		assertEquals(actual.getVideotitle(),"Why would Twitch streamers need a $20,000 server?? N3RDFUSION Visit");
@@ -93,13 +93,13 @@ public class TestVideoContainerModel {
 			fail(e.toString());
 		}
 		videoContainer.init(bindings);
-		List<YouTubeData> youtubeData = videoContainer.getItems();
+		List<VideoData> youtubeData = videoContainer.getItems();
 		//test size is 2
 		assertEquals(2,youtubeData.size());
 		
 		
 		//test first youtube data object
-		YouTubeData actual = youtubeData.get(0);
+		VideoData actual = youtubeData.get(0);
 		assertEquals(actual.getVideoid(), "OO9irWogFW0");
 		assert(actual.getVideohtml().contains("www.youtube.com/embed/OO9irWogFW0"));
 		assertEquals(actual.getVideotitle(),"Why would Twitch streamers need a $20,000 server?? N3RDFUSION Visit");
@@ -112,6 +112,20 @@ public class TestVideoContainerModel {
 		assert(actual.getVideohtml().contains("www.youtube.com/embed/BQe-TgQdFzw"));
 		assertEquals(actual.getVideotitle(),"\"5G\" is \"Here\"");
 		assertEquals(actual.getVideo_author_name(),"TechLinked");
+	}
+	
+	@Test
+	public void testWithVimeo() {
+		currentPagePath="/content/en/home/about";
+		try {
+			setUp();
+		} catch (Exception e) {
+			fail(e.toString());
+		}
+		videoContainer.init(bindings);
+		List<VideoData> actual = videoContainer.getItems();
+		
+		LOGGER.info(actual.toString());
 	}
 
 }

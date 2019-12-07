@@ -14,18 +14,21 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.sightly.WCMUsePojo;
 
 import static actingreel.core.constants.Constants.*;
-import static actingreel.core.utils.VideoUtils.extractYTId;
+import static actingreel.core.utils.VideoUtils.extractYoutubeId;
+import static actingreel.core.utils.VideoUtils.extractVimeoId;
 import static actingreel.core.utils.VideoUtils.getYoutubeJSON;
-import actingreel.core.models.objects.YouTubeData;
+import static actingreel.core.utils.VideoUtils.getVimeoJSON;
+import actingreel.core.models.objects.VideoData;
 
 public class VideoContainerModel extends WCMUsePojo {
 	
+	private static final String SELECTION = "selection";
 	// Class helper variables.
 	private List<String> videoUrls;
 	private ArrayList<HashMap<String,String>> dataWithDescription;
 	
 	// Main video data returned to videocontainer.html HTL.
-	private List<YouTubeData> youtubeData;
+	private List<VideoData> videoDataList;
 	
 	static Logger LOGGER = LoggerFactory.getLogger(VideoContainerModel.class);
 	
@@ -35,7 +38,7 @@ public class VideoContainerModel extends WCMUsePojo {
 			
 			// Instantiate class level variables.
 		 	videoUrls = new ArrayList<String>();
-		 	youtubeData = new ArrayList<YouTubeData>();
+		 	videoDataList = new ArrayList<VideoData>();
 		 	dataWithDescription = new ArrayList<HashMap<String,String>>();		 	
 		 	
 		 	// WCMUsePojo Resources.
@@ -43,30 +46,30 @@ public class VideoContainerModel extends WCMUsePojo {
 		 	Resource videoContainer = getResource();
 		 	Iterable<Resource> videos;
 		 	
-		 	// Get Youtube videos only if they exist.
+		 	// Get videos only if they exist.
 		 	videosNode = videoContainer.hasChildren() ? videoContainer.getChild(VIDEOS) : null;
 			if((videosNode!=null) && videosNode.hasChildren()) {
 				videos = videosNode.getChildren();
-				getYoutubeVideos(videos);
+				getVideos(videos);
 			}
 	}
 	
 	/*
-	 *  Returns Youtube URLs. (Mainly for testing.)
+	 *  Returns relevant provider URLs. (Mainly for testing.)
 	 */
 	public List<String> getUrls(){
 		return videoUrls;
 	}
 	
 	/*
-	 *  Returns populated list of YouTubeData objects for HTL.
+	 *  Returns populated list of VideoData objects for HTL.
 	 */
-	public List<YouTubeData> getItems(){
-		return youtubeData;
+	public List<VideoData> getItems(){
+		return videoDataList;
 	}
 	
 	
-	private void getYoutubeVideos(Iterable<Resource> videos){
+	private void getVideos(Iterable<Resource> videos){
 		for(Resource video : videos) {
 			ValueMap videoMap = video.getValueMap();
 			
@@ -74,13 +77,17 @@ public class VideoContainerModel extends WCMUsePojo {
 			
 			String videoUrl = videoMap.get(VIDEO_URL,EMPTY_STRING);
 			String videoDescription = videoMap.get(VIDEO_DESC,EMPTY_STRING);
+			
+			String videoSelectType = videoMap.get("videoSelect","");
+			
 
 			// Only populate dataWithDescription if there is a video URL
 			if(!(videoUrl.equals(EMPTY_STRING))) {
-
+				
 				videoUrls.add(videoUrl);
 				
 				// Add URL and author description to HashMap list (dataWithDescription).
+				map.put(SELECTION,videoSelectType);
 				map.put(VIDEO,videoUrl);
 				map.put(DESCRIPTION,videoDescription);
 				dataWithDescription.add(map);
@@ -90,38 +97,63 @@ public class VideoContainerModel extends WCMUsePojo {
 		// Iterate through video URLs and extract video ID from full URL.
 		for(HashMap<String, String> x : dataWithDescription) {
 			String url = x.get(VIDEO);
-			if(url.contains(VIDEO_IDENTIFIER)) {
-				String id = extractYTId(url);
+			if(url.contains(VIDEO_IDENTIFIER)||url.contains("vimeo")) {
+				String id = "";
+				switch(x.get(SELECTION)) {
+				case "youtube": {
+						id = extractYoutubeId(url);
+						break;
+					}
+				case "vimeo": {
+						id = extractVimeoId(url);
+						break;
+					}
+				default : {
+						id = extractYoutubeId(url);
+						break;
+					}
+				}
 				
-				LOGGER.info("**** YoutubeId: "+id);
+				LOGGER.info("**** VideoId: "+id);
 				x.replace(VIDEO, id);
 			};
 		}
 		
-		// Populates youtubeData with YouTubeData objects.
+		// Populates videoData with VideoData objects.
 		for(HashMap<String, String> x : dataWithDescription) {
 			String videoid = x.get(VIDEO);
 			
-			// Parse JSON from HTTP request utility function getYoutubeJSON()
-			JsonParser parser = new JsonParser();
-			JsonElement json = parser.parse(getYoutubeJSON(videoid));
-			JsonObject youtubeJson = json.getAsJsonObject();
 			
-			// Populate a YouTubeData object with relevant data from JSON response.
-			YouTubeData youtubeObj = new YouTubeData();
+			// Parse JSON from HTTP request utility function get{ Video-Provider }JSON()
+			JsonParser parser = new JsonParser();
+			String json = "";
+			switch(x.get(SELECTION)) {
+			case "youtube": 
+				json = getYoutubeJSON(videoid); 
+				break;
+			case "vimeo": 
+				json = getVimeoJSON(videoid); 
+				break;
+			default: json = getYoutubeJSON(videoid);
+			}
+			JsonElement jsonTree = parser.parse(json);
+			JsonObject videoJson = jsonTree.getAsJsonObject();
+			
+			// Populate a VideoData object with relevant data from JSON response.
+			VideoData videoObj = new VideoData();
 		    
 				// Remove extra '\"'s from HTML JSON string.
-				String htmlString = youtubeJson.get(HTML).toString().replace(HTML_VIDEO_TARGET, EMPTY_STRING);
+				String htmlString = videoJson.get(HTML).toString().replace(HTML_VIDEO_TARGET, EMPTY_STRING);
 			    
-				// Set YouTubeData object fields.
-				youtubeObj.setVideoid(videoid);
-			    youtubeObj.setVideotitle(youtubeJson.get(TITLE).getAsString());
-			    youtubeObj.setVideo_author_name(youtubeJson.get(AUTHOR_NAME).getAsString());
-			    youtubeObj.setVideohtml(htmlString.substring(1,htmlString.length()-1));
-			    youtubeObj.setVideo_description(x.get(DESCRIPTION));
+				// Set VideoData object fields.
+				videoObj.setVideoid(videoid);
+			    videoObj.setVideotitle(videoJson.get(TITLE).getAsString());
+			    videoObj.setVideo_author_name(videoJson.get(AUTHOR_NAME).getAsString());
+			    videoObj.setVideohtml(htmlString.substring(1,htmlString.length()-1));
+			    videoObj.setVideo_description(x.get(DESCRIPTION));
 			    
-			    // Add YouTubeData object to class variable that is instance of List<YouTubeData>.
-			    youtubeData.add(youtubeObj);
+			    // Add VideoData object to class variable that is instance of List<VideoData>.
+			    videoDataList.add(videoObj);
 		}
 	}
 }

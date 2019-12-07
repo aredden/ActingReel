@@ -42,7 +42,7 @@ public class TestFooterModel {
 	}
 	
 	public void setUp(String pagePath) throws Exception{
-		ctx.load().json("/actingreel/core/models/FooterModel.json","/content/en");
+		ctx.load().json("/actingreel/core/models/Footer.json","/content/en");
 		footer = new FooterModel();
 		
 		when(bindings.get("properties"))
