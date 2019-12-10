@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:lastModified="{Date}2019-11-18T16:41:51.335-05:00"
@@ -7,5 +7,42 @@
         cq:template="/conf/actingreel/settings/wcm/templates/acting-reel-content-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="WORK"
-        sling:resourceType="actingreel/components/structure/page"/>
+        sling:resourceType="actingreel/components/structure/page">
+        <root jcr:primaryType="nt:unstructured">
+            <responsivegrid
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+                <videocontainer
+                    jcr:created="{Date}2019-12-07T13:23:09.214-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-12-09T11:40:32.800-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="actingreel/components/content/videocontainer">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            width="1"/>
+                    </cq:responsive>
+                    <videos jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            videoDesc="something"
+                            videoSelect="vimeo"
+                            videoUrl="https://vimeo.com/377569840"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            videoDesc="top 10"
+                            videoSelect="youtube"
+                            videoUrl="https://www.youtube.com/watch?v=VDB65S6rCC0"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            videoDesc="description"
+                            videoSelect="vimeo"
+                            videoUrl="https://vimeo.com/374131624"/>
+                    </videos>
+                </videocontainer>
+            </responsivegrid>
+        </root>
+    </jcr:content>
 </jcr:root>

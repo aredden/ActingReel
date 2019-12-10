@@ -13,6 +13,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.Page;
+
 import static org.mockito.Mockito.*;
 
 import io.wcm.testing.mock.aem.junit.AemContext;
@@ -42,27 +44,38 @@ public class TestFooterModel {
 	}
 	
 	public void setUp(String pagePath) throws Exception{
-		ctx.load().json("/actingreel/core/models/Footer.json","/content/en");
+		ctx.load().json("/actingreel/core/models/Footer.json","/content/actingreel/en");
 		footer = new FooterModel();
 		
 		when(bindings.get("properties"))
 		.thenReturn(ctx.resourceResolver()
 		.getResource(pagePath+"/jcr:content/root/responsivegrid/footer")
 		.getValueMap());
-//		when(bindings.get("resource"))
-//		.thenReturn(ctx.resourceResolver()
-//		.getResource(pagePath+"/jcr:content/root/responsivegrid/footer"));
+		when(bindings.get("pageManager"))
+		.thenReturn(ctx.pageManager());
 	}
 
 	@Test
 	public void testGetFooterText() {
-		footerSetUp("/content/en/home");
+		footerSetUp("/content/actingreel/en/home");
 		footer.init(bindings);
 		String actual = footer.getFooterText();
 		String expected = "All rights reserved Juliana Redden (tm) 2019 2020";
 		LOGGER.info("**** Footer text: "+footer.getFooterText());
 		assertEquals(expected,actual);
-		
 	}
-
+	
+	@Test
+	public void testGetPages() {
+		footerSetUp("/content/actingreel/en/home");
+		footer.init(bindings);
+		Page work = footer.getWork();
+		Page about = footer.getAboutUs();
+		Page social = footer.getSocial();
+		Page resume = footer.getResume();
+		assertNotNull(work);
+		assertNotNull(about);
+		assertNotNull(social);
+		assertNotNull(resume);
+	}
 }

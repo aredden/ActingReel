@@ -127,5 +127,19 @@ public class TestVideoContainerModel {
 		
 		LOGGER.info(actual.toString());
 	}
+	
+	@Test
+	public void testNoUrl() {
+		currentPagePath="/content/en/home/modeling";
+		try {
+			setUp();
+		} catch (Exception e) {
+			fail(e.toString());
+		}
+		videoContainer.init(bindings);
+		List<VideoData> actual = videoContainer.getItems();
+		assertEquals(1,actual.size());
+		assertEquals("jacksfilms",actual.get(0).getVideo_author_name());
+	}
 
 }

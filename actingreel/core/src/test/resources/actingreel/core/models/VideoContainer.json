@@ -293,7 +293,27 @@
 	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
 	      "cq:lastModified": "Mon Nov 18 2019 16:43:29 GMT-0500",
 	      "sling:resourceType": "actingreel/components/structure/page",
-	      "cq:lastModifiedBy": "admin"
+	      "cq:lastModifiedBy": "admin",
+	      "root":{
+		      "responsivegrid": {
+			      "videocontainer":{
+			      	"videos": {
+			            "jcr:primaryType": "nt:unstructured",
+			            "item0": {
+			              "jcr:primaryType": "nt:unstructured",
+			              "videoSelect": "youtube",
+			              "videoUrl": "https://www.youtube.com/watch?v=VDB65S6rCC0",
+			              "videoDesc": "top 10"
+			            },
+			            "item1": {
+			              "jcr:primaryType": "nt:unstructured",
+			              "videoSelect": "vimeo",
+			              "videoDesc": "something"
+			            }
+			         }
+			      }
+		      }
+		   }
 	    }
 	  }
 	}

@@ -127,7 +127,7 @@
 	      "jcr:primaryType": "cq:PageContent",
 	      "jcr:createdBy": "admin",
 	      "jcr:title": "ACTING REEL",
-	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-content-page",
+	      "cq:template": "/conf/actingreel/settings/wcm/templates/acting-reel-contentv -page",
 	      "jcr:created": "Fri Nov 29 2019 15:12:59 GMT-0500",
 	      "cq:lastModified": "Tue Dec 03 2019 13:26:24 GMT-0500",
 	      "sling:resourceType": "actingreel/components/structure/page",

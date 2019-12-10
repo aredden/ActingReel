@@ -1,3 +1,25 @@
-<footer data-sly-use.footer="actingreel.core.models.FooterModel">
-	<p>${footer.footerText}</p>
+<div class="d-flex justify-content-center" data-sly-use.footer="actingreel.core.models.FooterModel">
+<footer class="container m-3 p-2">
+	<div class="row-lg text-muted d-flex justify-content-center m-3">
+	<p class="font-weight-bold footer-top-padding">Juliana Redden</p>
+	</div>
+	<div class="row-lg text-muted d-flex justify-content-center">
+		<div class="col-lg-3">
+			<a class="text-muted" href="${footer.work.path}.html">Works</a>
+		</div>
+		<div class="col-lg-3">
+			<a class="text-muted" href="${footer.resume.path}.html">Resume</a>
+		</div>
+		<div class="col-lg-3">
+			<a class="text-muted" href="${footer.aboutUs.path}.html">About Us</a>
+		</div>
+		<div class="col-lg-3">
+			<a class="text-muted" href="${footer.social.path}.html">Contact</a>
+		</div>
+	</div>
+	<hr/>
+	<div class="row-lg d-flex justify-content-center m-3 footer-rightsreserved font-weight-light">
+		All Rights Reserved.
+	</div>
 </footer>
+</div>

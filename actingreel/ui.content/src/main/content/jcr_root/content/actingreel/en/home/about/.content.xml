@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:lastModified="{Date}2019-11-18T16:43:11.933-05:00"
@@ -7,5 +7,87 @@
         cq:template="/conf/actingreel/settings/wcm/templates/acting-reel-content-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="ABOUT"
-        sling:resourceType="actingreel/components/structure/page"/>
+        sling:resourceType="actingreel/components/structure/page">
+        <root jcr:primaryType="nt:unstructured">
+            <responsivegrid
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+                <container
+                    jcr:created="{Date}2019-12-10T14:31:03.455-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-12-10T14:31:03.455-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="actingreel/components/form/container"
+                    action="/content/usergenerated/actingreel/en/home/about/cq-gen1576006263462/"
+                    actionType="foundation/components/form/actions/store">
+                    <text_1734711139
+                        jcr:created="{Date}2019-12-10T14:31:08.929-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-10T14:52:09.725-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Name"
+                        sling:resourceType="actingreel/components/form/text"
+                        name="name"
+                        required="true"
+                        requiredMessage="Your name is required."
+                        rows="2"
+                        type="text"
+                        value="Jane Doe"/>
+                    <text_2083795640
+                        jcr:created="{Date}2019-12-10T14:35:17.220-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-10T14:52:55.169-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Email"
+                        sling:resourceType="actingreel/components/form/text"
+                        name="email"
+                        required="true"
+                        requiredMessage="You must submit a valid email address"
+                        rows="2"
+                        type="text"
+                        value="someone@email.com">
+                        <cq:responsive jcr:primaryType="nt:unstructured">
+                            <default
+                                jcr:primaryType="nt:unstructured"
+                                offset="0"
+                                width="1"/>
+                        </cq:responsive>
+                    </text_2083795640>
+                    <text
+                        jcr:created="{Date}2019-12-10T14:33:17.513-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-10T14:53:08.264-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Message"
+                        sling:resourceType="actingreel/components/form/text"
+                        name="message"
+                        required="true"
+                        requiredMessage="Describe your reason for contacting Juliana Redden."
+                        rows="4"
+                        type="textarea"
+                        value="I would like to get in touch with you..."/>
+                    <button
+                        jcr:created="{Date}2019-12-10T14:36:35.289-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-12-10T14:58:46.877-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Send Message"
+                        sling:resourceType="actingreel/components/form/button"
+                        name="submit"
+                        type="submit"
+                        value="submitted"/>
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            width="1"/>
+                    </cq:responsive>
+                </container>
+            </responsivegrid>
+        </root>
+    </jcr:content>
 </jcr:root>
