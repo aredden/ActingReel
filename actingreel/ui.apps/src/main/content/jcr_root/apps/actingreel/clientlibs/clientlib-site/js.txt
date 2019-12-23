@@ -1,6 +1,7 @@
 #base=.
 
 components/topnav/topnav.js
+components/emailcontact/emailcontact.js
 bootstrap/jquery.slim.min.js
 bootstrap/popper.min.js
 bootstrap/bootstrap.min.js
