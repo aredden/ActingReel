@@ -1,16 +1,20 @@
 $(document).ready(function(){
 	$('#submitEmailContact').click(function(){
-
-		var email = $('#EmailContactInput').val();
-		var message = $('#EmailContactTextArea').val();
+		var info = {
+				email: $('#EmailContactEmail').val(),
+				title: $('#EmailContactTextArea').val(),
+				message: $('#EmailContactTitle').val()
+		}
+		
+		
 		$.ajax({
 			type: 'POST',
-			url: '/bin/actingreel/documents.servlet',
-			data: 'email='+email+'&message='+message,
+			url: '/bin/actingreel/documents',
+			contentType: 'application/json',
+			data: JSON.stringify(info),
 			success: function(msg){
 				var json = jQuery.parseJSON(msg);
 				alert(json);
-				$('#EmailContactResponse').val(json);
 				console.log("success");
 			},
 			error: function(xhr,status,err){
