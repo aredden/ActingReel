@@ -19,14 +19,14 @@
                    <email jcr:primaryType="nt:unstructured"
                        text="Send Email"
                        fieldLabel="Send Email"
-                       name="email"
-                       sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                       name="./jcr:content/sendEmail"
+                       sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                    ></email>
                    <archive jcr:primaryType="nt:unstructured"
                    		text="Archive Email"
                         fieldLabel="Archive Email"
-                        name="archive"
-                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                        name="./jcr:content/archiveEmail"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                     ></archive>
                 </items>
             </column>

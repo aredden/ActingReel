@@ -36,7 +36,9 @@ import java.util.Set;
 
 import javax.jcr.Binary;
 import javax.jcr.Node;
+import javax.jcr.Property;
 import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import javax.jcr.Value;
 
 @Component(service=WorkflowProcess.class,
@@ -64,37 +66,46 @@ public class EmailContactProcessStep implements WorkflowProcess{
 	public void execute(WorkItem item, WorkflowSession session, MetaDataMap args) throws WorkflowException {
 		try {
 			
-			WorkflowData workflowData = item.getWorkflowData();
+			WorkflowData workflowMetaData = item.getWorkflowData();
 			MetaDataMap itemDataMap = item.getMetaDataMap();
-			MetaDataMap dataMap = workflowData.getMetaDataMap();
-
+			MetaDataMap dataMap = workflowMetaData.getMetaDataMap();
+			
+			
+			LOGGER.info("***** Logger Logging!");
+			String historyEntryPath = itemDataMap.get("historyEntryPath",String.class);
+			Node payloadNode = ((Session)session.adaptTo(Session.class)).getNode(historyEntryPath+"/workItem/metaData");
+			
+			Property emailFromHistory = payloadNode.getProperty("sendEmail");
+			Property archiveFromHistory = payloadNode.getProperty("archiveEmail");
 			
 			// DEBUG
-			debugBasic(dataMap,workflowData);
-			LOGGER.info("***** Logger Logging!");
+			debugBasic(dataMap,workflowMetaData);
+
 			debugMetaDataMap(itemDataMap);
 			System.out.println("************-- Workflow Data Map -- *********");
 			debugMetaDataMap(dataMap);
 			System.out.println("************-- args --*************");
 			debugMetaDataMap(args);
+			System.out.println("*****``````` history Email: "+ emailFromHistory.getString() + "  -  "+ emailFromHistory.getClass());
+			System.out.println("*****``````` archive Email: "+ archiveFromHistory.getString() + "  -  "+ archiveFromHistory.getClass());			
 			
-			if(workflowData.getPayloadType().equals(NT_FILE)) {
+			if(workflowMetaData.getPayloadType().equals(NT_FILE)) {
 				Boolean email = (Boolean) dataMap.get("email",Boolean.class);
 				Boolean archive = (Boolean) dataMap.get("archive",Boolean.class);
 				
 				if(email) {
-					sendEmail(workflowData, session);
+					sendEmail(workflowMetaData, session);
 				}
 				if(archive) {
-					archiveEmail(workflowData, session);
+					archiveEmail(workflowMetaData, session);
 				} else {
-					deleteEmail(workflowData, session);
+					deleteEmail(workflowMetaData, session);
 				}
 			} else {
-				LOGGER.error(workflowData.getPayloadType() +
+				LOGGER.error(workflowMetaData.getPayloadType() +
 						" " + 
-						workflowData.getPayload().toString());
-				throw new IllegalArgumentException();
+						workflowMetaData.getPayload().toString());
+				throw new IllegalArgumentException("Payload type mismatch.");
 			}
 
 		} catch (Exception e) {
