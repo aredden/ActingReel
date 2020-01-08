@@ -50,20 +50,20 @@ import java.util.Map;
 	service=Servlet.class,
     property={
             SERVICE_DESCRIPTION + EMAIL_CONTACT_SERVICE_DESC,
-            SLING_SERVLET_METHODS+EMAIL_CONTACT_ALLOWED_METHODS,
-            SLING_SERVLET_PATHS+EMAIL_CONTACT_PATH,
-            SLING_SERVLET_NAME+EMAIL_CONTACT_SERVLET
+            SLING_SERVLET_METHODS + EMAIL_CONTACT_ALLOWED_METHODS,
+            SLING_SERVLET_PATHS + EMAIL_CONTACT_PATH,
+            SLING_SERVLET_NAME + EMAIL_CONTACT_SERVLET
     })
 public class EmailContactServlet extends SlingAllMethodsServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Reference
 	private ResourceResolverFactory resourceResolverFactory;
-	
+
 	private ResourceResolver resourceResolver;
 
 	public Logger LOGGER = LoggerFactory.getLogger(EmailContactServlet.class);
-	
+
 	protected void doPost(SlingHttpServletRequest req, SlingHttpServletResponse res) 
 				throws IOException,
 					   ServletException {
@@ -72,8 +72,10 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 			Session session = resourceResolver.adaptTo(Session.class);
 			Node node = session.getNode(ACTINGREEL_DOCUMENTS);
 			createFileFromSession(session, req, node);
+			
 			session.save();
 			res.addHeader("EmailStatus", "Success");
+			
 
 		} catch (LoginException e) {
 			res.setStatus(401);
@@ -92,7 +94,7 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 			res.getWriter().write("Body must include email, title, & message.");
 		}
 	}
-	
+
 	private void createFileFromSession(Session session, SlingHttpServletRequest req, Node parentNode) 
 			 throws ItemExistsException, 
 					PathNotFoundException, 
@@ -109,8 +111,11 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		String title = findAppropriateNodeName(parentNode,new StringBuilder().append(jsonMap.get(TITLE)));
 		Node fileNode = parentNode.addNode(title, NT_FILE);
 		Node resNode = fileNode.addNode(JCR_CONTENT,NT_RESOURCE);
+		String dataString = jsonMap.get(MESSAGE) + 
+				"\n\nResponse address: " +
+				jsonMap.get(EMAIL);
 		Binary value = session.getValueFactory().createBinary(
-				new ByteArrayInputStream(jsonMap.get(MESSAGE).getBytes())
+				new ByteArrayInputStream(dataString.getBytes())
 		);
 		resNode.setProperty(JCR_MIMETYPE, APPLICATION_OCTET_STREAM);
 		resNode.setProperty(JCR_DATA, value);
@@ -118,13 +123,13 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		lastModified.setTimeInMillis(lastModified.getTimeInMillis());
 		resNode.setProperty(JCR_LASTMODIFIED, lastModified.getTimeInMillis());
 	}
-	
+
 	private HashMap<String, String> parsePOSTEmailJSON(SlingHttpServletRequest req) 
 			throws JsonIOException,
 					JsonSyntaxException, 
 					IOException, 
 					IncorrectPOSTParametersException {
-		
+
 		HashMap<String, String> dataMap = new HashMap<String,String>();
 		JsonParser parser = new JsonParser();
 		JsonObject json = parser.parse(req.getReader()).getAsJsonObject();
@@ -136,7 +141,7 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		dataMap.put(EMAIL, json.get(EMAIL).getAsString());
 		return dataMap;
 	}
-	
+
 	private ResourceResolver getEmailContactAuthenticatedResourceResolver() 
 			throws LoginException {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -145,7 +150,7 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		resolver = resourceResolverFactory.getServiceResourceResolver(map);
 		return resolver;
 	}
-	
+
 	private String findAppropriateNodeName(Node parentNode, StringBuilder title) 
 			throws RepositoryException {
 		int i = 0;
@@ -157,11 +162,8 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		}
 		return title.toString();
 	}
-	
+
 }
 
-class IncorrectPOSTParametersException extends Throwable{
-	
-	private static final long serialVersionUID = -2664393461911032915L;
-	
-}
+class IncorrectPOSTParametersException extends Throwable {
+	private static final long serialVersionUID = -2664393461911032915L; }

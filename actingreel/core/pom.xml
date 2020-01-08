@@ -39,11 +39,16 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <!-- Import any version of javax.inject, to allow running on multiple versions of AEM -->
-                        <Import-Package>javax.inject;version=0.0.0,*</Import-Package>
+                        <Bundle-SymbolicName>actingreel.core</Bundle-SymbolicName>
+
                         <Sling-Model-Packages>
-                            actingreel.core
+                          actingreel.core.models
+                          actingreel.core.workflow
+                          actingreel.core.filters
+                          actingreel.core.servlets
+                          actingreel.core.utils
                         </Sling-Model-Packages>
+                        
                     </instructions>
                 </configuration>
             </plugin>
@@ -103,6 +108,14 @@
             <artifactId>uber-jar</artifactId>
             <classifier>apis</classifier>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-email</artifactId>
+		    <version>1.1</version>
+		</dependency>
+        
         <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.core</artifactId>
