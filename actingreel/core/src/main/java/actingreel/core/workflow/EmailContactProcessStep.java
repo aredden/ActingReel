@@ -65,7 +65,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 	@Override
 	public void execute(WorkItem item, WorkflowSession session, MetaDataMap args) throws WorkflowException {
 		try {
-			
+			resolver = session.adaptTo(ResourceResolver.class);
 			WorkflowData workflowMetaData = item.getWorkflowData();
 			MetaDataMap itemDataMap = item.getMetaDataMap();
 			MetaDataMap dataMap = workflowMetaData.getMetaDataMap();
@@ -75,8 +75,8 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			String historyEntryPath = itemDataMap.get("historyEntryPath",String.class);
 			Node payloadNode = ((Session)session.adaptTo(Session.class)).getNode(historyEntryPath+"/workItem/metaData");
 			
-			Property emailFromHistory = payloadNode.getProperty("sendEmail");
-			Property archiveFromHistory = payloadNode.getProperty("archiveEmail");
+			boolean email = payloadNode.getProperty("email").getValue().getString().equals("on");
+			boolean archive = payloadNode.getProperty("archive").getValue().getString().equals("on");
 			
 			// DEBUG
 			debugBasic(dataMap,workflowMetaData);
@@ -86,12 +86,12 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			debugMetaDataMap(dataMap);
 			System.out.println("************-- args --*************");
 			debugMetaDataMap(args);
-			System.out.println("*****``````` history Email: "+ emailFromHistory.getString() + "  -  "+ emailFromHistory.getClass());
-			System.out.println("*****``````` archive Email: "+ archiveFromHistory.getString() + "  -  "+ archiveFromHistory.getClass());			
-			
-			if(workflowMetaData.getPayloadType().equals(NT_FILE)) {
-				Boolean email = (Boolean) dataMap.get("email",Boolean.class);
-				Boolean archive = (Boolean) dataMap.get("archive",Boolean.class);
+			//System.out.println("*****``````` history Email: "+ emailFromHistory.getString() + "  -  "+ emailFromHistory.getClass());
+			//System.out.println("*****``````` archive Email: "+ archiveFromHistory.getString() + "  -  "+ archiveFromHistory.getClass());
+			String payload = workflowMetaData.getPayload().toString();
+			Resource payloadType = resolver.getResource(workflowMetaData.getPayload().toString());
+
+			if(payloadType.getResourceType().equals(NT_FILE)) {
 				
 				if(email) {
 					sendEmail(workflowMetaData, session);
@@ -113,9 +113,9 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			System.out.println(args.entrySet().toString());
 			System.out.println(item.getWorkflowData().getMetaDataMap().entrySet().toString());
 			e.printStackTrace();
-			
+
 		}
-		
+
 	}
 	
 	private void debugBasic(MetaDataMap dataMap, WorkflowData workflowData) {
@@ -135,19 +135,15 @@ public class EmailContactProcessStep implements WorkflowProcess{
 	private void deleteEmail(WorkflowData workflowData, WorkflowSession session) 
 			throws RepositoryException, 
 				   PersistenceException {
-		Node emailNode = (Node) workflowData.getPayload();
-		resolver = session.adaptTo(ResourceResolver.class);
-		Resource toBeDeleted = resolver.getResource(emailNode.getPath());
-		resolver.delete(toBeDeleted);
+		resolver.delete(resolver.getResource(workflowData.getPayload().toString()));
 		resolver.commit();
 	}
 
 	private void archiveEmail(WorkflowData workflowData, WorkflowSession session) 
 			throws PersistenceException, 
 				   RepositoryException {
-		Node emailNode = (Node) workflowData.getPayload();
-		resolver = session.adaptTo(ResourceResolver.class);
-		resolver.move(emailNode.getPath(), ARCHIVE_PATH + emailNode.getName());
+		Resource emailResource = resolver.getResource(workflowData.getPayload().toString());
+		resolver.move(emailResource.getPath(), ARCHIVE_PATH + emailResource.getName());
 		resolver.commit();
 		
 	}
@@ -161,12 +157,11 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		Email email = new SimpleEmail();
 		
 		// Collect Email nt:file and jcr:content node.
-		Node emailNode = (Node) workflowData.getPayload();
+		Node emailNode = resolver.getResource(workflowData.getPayload().toString()).adaptTo(Node.class);
 		Node jcrContentNode = emailNode.getNode(JCR_CONTENT);
 		
 		// Collect Email Binary from jcr:content node.
-		Binary data = (Binary) jcrContentNode.getProperty(JCR_DATA);
-		InputStream stream = data.getStream();
+		InputStream stream = jcrContentNode.getProperty(JCR_DATA).getBinary().getStream();
 		InputStreamReader reader = new InputStreamReader(stream);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		while(reader.ready()) {

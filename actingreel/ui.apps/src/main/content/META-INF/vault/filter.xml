@@ -2,4 +2,5 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/actingreel"/>
     <filter root="/apps/sling" />
+    <filter root="/etc/workflow" mode="update"/>
 </workspaceFilter>

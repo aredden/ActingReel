@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:designPath="/etc/designs/default"
+        cq:lastModified="{Date}2020-01-08T16:38:10.778-05:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/libs/cq/workflow/templates/model"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="EmailContact Workflow"
+        jcr:uuid="fdce83be-f1bf-4ad5-9ca9-7f558258f4e9"
+        sling:resourceType="cq/workflow/components/pages/model">
+        <flow
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <dialog
+                jcr:created="{Date}2020-01-06T10:20:32.031-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T15:03:17.964-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Complete Dialog"
+                sling:resourceType="cq/workflow/components/model/dialog">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    DIALOG_PATH="/etc/workflow/dialogs/EmailContactDialogStep/cq:dialog"
+                    DO_NOTIFY="true"
+                    PARTICIPANT="admin"/>
+            </dialog>
+            <process
+                jcr:created="{Date}2020-01-07T15:29:50.708-05:00"
+                jcr:createdBy="admin"
+                jcr:description="Take data from Dialog Step and Choose whether to Email / Archive"
+                jcr:lastModified="{Date}2020-01-08T16:38:10.768-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="EmailContact Process Step"
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="actingreel.core.workflow.EmailContactProcessStep"/>
+            </process>
+        </flow>
+        <model/>
+    </jcr:content>
+</jcr:root>
