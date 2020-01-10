@@ -67,9 +67,8 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		try {
 			resolver = session.adaptTo(ResourceResolver.class);
 			WorkflowData workflowMetaData = item.getWorkflowData();
-			MetaDataMap itemDataMap = item.getMetaDataMap();
 			MetaDataMap dataMap = workflowMetaData.getMetaDataMap();
-			
+			MetaDataMap itemDataMap = item.getMetaDataMap();
 			
 			LOGGER.info("***** Logger Logging!");
 			String historyEntryPath = itemDataMap.get("historyEntryPath",String.class);
@@ -79,102 +78,90 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			boolean archive = payloadNode.getProperty("archive").getValue().getString().equals("on");
 			
 			// DEBUG
-			debugBasic(dataMap,workflowMetaData);
-
-			debugMetaDataMap(itemDataMap);
+			debugEntrySet(itemDataMap.entrySet());
 			System.out.println("************-- Workflow Data Map -- *********");
-			debugMetaDataMap(dataMap);
+			debugEntrySet(dataMap.entrySet());
 			System.out.println("************-- args --*************");
-			debugMetaDataMap(args);
-			//System.out.println("*****``````` history Email: "+ emailFromHistory.getString() + "  -  "+ emailFromHistory.getClass());
-			//System.out.println("*****``````` archive Email: "+ archiveFromHistory.getString() + "  -  "+ archiveFromHistory.getClass());
+			debugEntrySet(args.entrySet());
 			String payload = workflowMetaData.getPayload().toString();
 			Resource payloadType = resolver.getResource(workflowMetaData.getPayload().toString());
-
+			System.out.println("~~~~~~~~~~~ Payload: "+payload);
 			if(payloadType.getResourceType().equals(NT_FILE)) {
 				
 				if(email) {
-					sendEmail(workflowMetaData, session);
+					sendEmail(payload, session);
 				}
 				if(archive) {
-					archiveEmail(workflowMetaData, session);
+					archiveEmail(payload, session);
 				} else {
-					deleteEmail(workflowMetaData, session);
+					deleteEmail(payload, session);
 				}
-			} else {
-				LOGGER.error(workflowMetaData.getPayloadType() +
-						" " + 
-						workflowMetaData.getPayload().toString());
-				throw new IllegalArgumentException("Payload type mismatch.");
 			}
-
 		} catch (Exception e) {
-			LOGGER.error("******* Error from"+e.getMessage());
-			System.out.println(args.entrySet().toString());
-			System.out.println(item.getWorkflowData().getMetaDataMap().entrySet().toString());
+			LOGGER.error("******* Error from:"+e.getMessage());
+			System.out.println("***** entryset workflowargs on exception: "+args.entrySet().toString());
+			System.out.println("***** item data entryset on exception: "+item.getWorkflowData().getMetaDataMap().entrySet().toString());
 			e.printStackTrace();
 
 		}
 
 	}
-	
-	private void debugBasic(MetaDataMap dataMap, WorkflowData workflowData) {
-		System.out.println("***** Payload Type: "+workflowData.getPayloadType());
-		System.out.println("***** Email property: "+dataMap.get("email",String.class));
-		System.out.println("***** Archive property: "+dataMap.get("archive",String.class));
-	}
 
-	private void debugMetaDataMap(MetaDataMap dataMap) {
-		Set<Entry<String,Object>> entrySet = dataMap.entrySet();
-		for(Entry entry : entrySet) {
+
+	@SuppressWarnings("unused")
+	private void debugEntrySet(Set<Entry<String, Object>> entrySet) {
+		for(@SuppressWarnings("rawtypes") Entry entry : entrySet) {
 			System.out.println("***** Argument in map: "+entry.getKey().toString()+" - "+entry.getValue().toString());
 				System.out.println("***** Class of previous item: "+entry.getClass());
 		}
 	}
 
-	private void deleteEmail(WorkflowData workflowData, WorkflowSession session) 
+	private void deleteEmail(String payload, WorkflowSession session) 
 			throws RepositoryException, 
 				   PersistenceException {
-		resolver.delete(resolver.getResource(workflowData.getPayload().toString()));
+
+		resolver = session.adaptTo(ResourceResolver.class);
+		Resource emailResource = resolver.getResource(payload);
+		Resource toBeDeleted = resolver.getResource(emailResource.getPath());
+		resolver.delete(toBeDeleted);
 		resolver.commit();
 	}
 
-	private void archiveEmail(WorkflowData workflowData, WorkflowSession session) 
+	private void archiveEmail(String payload, WorkflowSession session) 
 			throws PersistenceException, 
 				   RepositoryException {
-		Resource emailResource = resolver.getResource(workflowData.getPayload().toString());
-		resolver.move(emailResource.getPath(), ARCHIVE_PATH + emailResource.getName());
+
+		Resource emailResource = resolver.getResource(payload);
+		resolver.move(emailResource.getPath(), ARCHIVE_PATH);
 		resolver.commit();
-		
 	}
 
-	private void sendEmail(WorkflowData workflowData, WorkflowSession session) 
+	private void sendEmail(String payload, WorkflowSession session) 
 			throws RepositoryException, 
 				   IOException, 
 				   EmailException {
-		
 		MessageGateway<Email> gateway;
 		Email email = new SimpleEmail();
+		ResourceResolver resolver = session.adaptTo(ResourceResolver.class);
+		Resource emailResource = resolver.getResource(payload);
 		
-		// Collect Email nt:file and jcr:content node.
-		Node emailNode = resolver.getResource(workflowData.getPayload().toString()).adaptTo(Node.class);
-		Node jcrContentNode = emailNode.getNode(JCR_CONTENT);
+		Resource jcrContentResource = emailResource.getChild(JCR_CONTENT);
 		
 		// Collect Email Binary from jcr:content node.
-		InputStream stream = jcrContentNode.getProperty(JCR_DATA).getBinary().getStream();
-		InputStreamReader reader = new InputStreamReader(stream);
+		InputStream dataStream = jcrContentResource.getValueMap().get(JCR_DATA, InputStream.class);
+		InputStreamReader reader = new InputStreamReader(dataStream);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		while(reader.ready()) {
 			output.write(reader.read());
 		}
 		
 		// Populate email global variables.
-		emailTitle = emailNode.getName();
+		emailTitle = emailResource.getName();
 		emailMessage = output.toString();
 		email.addTo(toAddress);
 		email.setMsg(emailMessage);
 		email.setSubject(emailTitle);
-	
+
 		gateway = messageGatewayService.getGateway(Email.class);
 		gateway.send(email);
 	}

@@ -58,18 +58,18 @@ import com.day.cq.wcm.api.Page;
 
 @Component(service=WorkflowProcess.class,
 		   property= {
-				   Constants.SERVICE_DESCRIPTION+"=Document Collect And Modify",
-				   "process.label=Document Collect and Modify"
+				   Constants.SERVICE_DESCRIPTION+"=Initialize Workflow Properties",
+				   "process.label=Initialize Workflow Properties"
 		   }
 		)
-public class EmailContactCollectAndModify implements WorkflowProcess{
+public class EmailContactInitProps implements WorkflowProcess{
 
 	@Reference
 	ResourceResolverFactory resolverFactory;
 	
 	ResourceResolver resolver;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(EmailContactCollectAndModify.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmailContactInitProps.class);
 	
 	@Override
 	public void execute(WorkItem item, WorkflowSession session, MetaDataMap args) throws WorkflowException {
@@ -79,6 +79,9 @@ public class EmailContactCollectAndModify implements WorkflowProcess{
 			resolver = session.adaptTo(ResourceResolver.class);
 			
 			WorkflowData data = item.getWorkflowData();
+			MetaDataMap dataMap = data.getMetaDataMap();
+			dataMap.put("emailchecked", "unset");
+			dataMap.put("archivechecked","unset");
 			
 			
 		} catch(Exception e) {
@@ -88,3 +91,5 @@ public class EmailContactCollectAndModify implements WorkflowProcess{
 	}
 
 }
+///libs/cq/inbox/gui/components/inbox/dialoginjection/render/render.jsp
+//workitem.getWorkflow().getId()+"/data/metaData"

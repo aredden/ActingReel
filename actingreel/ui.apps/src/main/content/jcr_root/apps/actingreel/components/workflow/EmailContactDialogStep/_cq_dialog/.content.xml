@@ -5,29 +5,30 @@
 	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     sling:resourceType="cq/gui/components/authoring/dialog"
+    jcr:title="EmailContact Dialog Step"
     helppath="en/cq/current">
 	<content jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/foundation/container">
-        <layout jcr:primaryType="nt:unstructured"
-            margin="false"
-            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
- 		/>
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
             <column jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/foundation/container">
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                 <items jcr:primaryType="nt:unstructured">
-                   <email jcr:primaryType="nt:unstructured"
+                   <emailchecked jcr:primaryType="nt:unstructured"
                        text="Send Email"
                        fieldLabel="Send Email"
-                       name="./jcr:content/sendEmail"
+                       value="true"
+                       uncheckedValue="false"
+                       name="emailchecked"
                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                   ></email>
-                   <archive jcr:primaryType="nt:unstructured"
+                   />
+                   <archivechecked jcr:primaryType="nt:unstructured"
                    		text="Archive Email"
                         fieldLabel="Archive Email"
-                        name="./jcr:content/archiveEmail"
+ 			            value="true"
+  	   	                uncheckedValue="false"
+                        name="archivechecked"
                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                    ></archive>
+                    />
                 </items>
             </column>
         </items>
