@@ -1,17 +1,16 @@
 package actingreel.core.utils;
 
-import javax.jcr.Node;
+import java.util.Set;
+import java.util.Map.Entry;
 
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 
 public class ActingreelJCRUtils {
 
-	public void createFileAtPath(String path, ResourceResolver resolver, Resource document){
-		String originalPath = document.getPath();
-		Node newDocument;
-		
-		
+	public void debugEntrySet(Set<Entry<String, Object>> entrySet) {
+		for(@SuppressWarnings("rawtypes") Entry entry : entrySet) {
+			System.out.println("***** Argument in map: "+entry.getKey().toString()+" - "+entry.getValue().toString());
+				System.out.println("***** Class of previous item: "+entry.getClass());
+		}
 	}
 	
 }

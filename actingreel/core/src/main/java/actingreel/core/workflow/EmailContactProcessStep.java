@@ -24,19 +24,27 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
 
+import static actingreel.core.constants.ServletConstants.EMAIL;
+import static actingreel.core.constants.ServletConstants.MESSAGE;
+import static actingreel.core.constants.ServletConstants.TITLE;
 import static com.day.cq.commons.jcr.JcrConstants.*;
+import static org.apache.jackrabbit.vault.util.MimeTypes.APPLICATION_OCTET_STREAM;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.jcr.Binary;
 import javax.jcr.Node;
 import javax.jcr.Property;
+import javax.jcr.PropertyIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.Value;
@@ -67,84 +75,76 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		try {
 			resolver = session.adaptTo(ResourceResolver.class);
 			WorkflowData workflowMetaData = item.getWorkflowData();
-			MetaDataMap dataMap = workflowMetaData.getMetaDataMap();
 			MetaDataMap itemDataMap = item.getMetaDataMap();
 			
-			LOGGER.info("***** Logger Logging!");
 			String historyEntryPath = itemDataMap.get("historyEntryPath",String.class);
 			Node payloadNode = ((Session)session.adaptTo(Session.class)).getNode(historyEntryPath+"/workItem/metaData");
 			
-			boolean email = payloadNode.getProperty("email").getValue().getString().equals("on");
-			boolean archive = payloadNode.getProperty("archive").getValue().getString().equals("on");
+			boolean email;
+			boolean archive;
+			boolean dialogFunctional =
+					payloadNode.hasProperty("email@Delete") &&
+					payloadNode.hasProperty("archive@Delete");
 			
-			// DEBUG
-			debugEntrySet(itemDataMap.entrySet());
-			System.out.println("************-- Workflow Data Map -- *********");
-			debugEntrySet(dataMap.entrySet());
-			System.out.println("************-- args --*************");
-			debugEntrySet(args.entrySet());
-			String payload = workflowMetaData.getPayload().toString();
-			Resource payloadType = resolver.getResource(workflowMetaData.getPayload().toString());
-			System.out.println("~~~~~~~~~~~ Payload: "+payload);
-			if(payloadType.getResourceType().equals(NT_FILE)) {
+			if(dialogFunctional) {
+				email = payloadNode.hasProperty("email");
+				archive = payloadNode.hasProperty("archive");
+			} else {
+				throw new Exception("Dialog values not seen by workflow.");
+			}
+
+			String payloadPath = workflowMetaData.getPayload().toString();
+			Resource payloadResource = resolver.getResource(workflowMetaData.getPayload().toString());
+
+			if(payloadResource.getResourceType().equals(NT_FILE)) {
 				
 				if(email) {
-					sendEmail(payload, session);
+					sendEmail(payloadPath, session);
 				}
 				if(archive) {
-					archiveEmail(payload, session);
+					archiveEmail(payloadPath, session, payloadResource.getName());
 				} else {
-					deleteEmail(payload, session);
+					deleteEmail(payloadPath, session);
 				}
 			}
 		} catch (Exception e) {
 			LOGGER.error("******* Error from:"+e.getMessage());
-			System.out.println("***** entryset workflowargs on exception: "+args.entrySet().toString());
-			System.out.println("***** item data entryset on exception: "+item.getWorkflowData().getMetaDataMap().entrySet().toString());
-			e.printStackTrace();
-
+			LOGGER.info("***** entryset workflowargs on exception: "+args.entrySet().toString());
+			LOGGER.info("***** item data entryset on exception: "+item.getWorkflowData().getMetaDataMap().entrySet().toString());
 		}
 
-	}
-
-
-	@SuppressWarnings("unused")
-	private void debugEntrySet(Set<Entry<String, Object>> entrySet) {
-		for(@SuppressWarnings("rawtypes") Entry entry : entrySet) {
-			System.out.println("***** Argument in map: "+entry.getKey().toString()+" - "+entry.getValue().toString());
-				System.out.println("***** Class of previous item: "+entry.getClass());
-		}
 	}
 
 	private void deleteEmail(String payload, WorkflowSession session) 
 			throws RepositoryException, 
 				   PersistenceException {
-
-		resolver = session.adaptTo(ResourceResolver.class);
-		Resource emailResource = resolver.getResource(payload);
-		Resource toBeDeleted = resolver.getResource(emailResource.getPath());
-		resolver.delete(toBeDeleted);
-		resolver.commit();
+		Session sessionFromWorkflow = session.adaptTo(Session.class);
+		sessionFromWorkflow.removeItem(payload);
+		sessionFromWorkflow.save();
 	}
 
-	private void archiveEmail(String payload, WorkflowSession session) 
+	private void archiveEmail(String payloadPath, WorkflowSession session, String emailTitle) 
 			throws PersistenceException, 
 				   RepositoryException {
-
-		Resource emailResource = resolver.getResource(payload);
-		resolver.move(emailResource.getPath(), ARCHIVE_PATH);
-		resolver.commit();
+		Session sessionFromWorkflow = session.adaptTo(Session.class);
+		sessionFromWorkflow.move(payloadPath, ARCHIVE_PATH + emailTitle);
+		sessionFromWorkflow.save();
 	}
 
 	private void sendEmail(String payload, WorkflowSession session) 
 			throws RepositoryException, 
 				   IOException, 
 				   EmailException {
+		
+		// Email related variable instantiation.
 		MessageGateway<Email> gateway;
 		Email email = new SimpleEmail();
-		ResourceResolver resolver = session.adaptTo(ResourceResolver.class);
-		Resource emailResource = resolver.getResource(payload);
 		
+		// ResourceResolver for gathering data on payload.
+		ResourceResolver resolver = session.adaptTo(ResourceResolver.class);
+		
+		// Collect email & jcr:content resources.
+		Resource emailResource = resolver.getResource(payload);
 		Resource jcrContentResource = emailResource.getChild(JCR_CONTENT);
 		
 		// Collect Email Binary from jcr:content node.
@@ -163,7 +163,9 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		email.setSubject(emailTitle);
 
 		gateway = messageGatewayService.getGateway(Email.class);
+		
+		// Send email
 		gateway.send(email);
 	}
-
+	
 }

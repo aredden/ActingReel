@@ -29,6 +29,7 @@
                         text="Archive Email"/>
                 </items>
             </column>
+            
         </items>
     </content>
 </jcr:root>
