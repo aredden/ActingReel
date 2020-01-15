@@ -8,8 +8,6 @@ import org.apache.sling.api.resource.ResourceResolverFactory;
 
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 
-import java.lang.Throwable;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -46,6 +44,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import actingreel.core.exceptions.IncorrectPOSTParametersException;
+
 @Component(
 	service=Servlet.class,
     property={
@@ -55,6 +55,14 @@ import java.util.Map;
             SLING_SERVLET_NAME + EMAIL_CONTACT_SERVLET
     })
 public class EmailContactServlet extends SlingAllMethodsServlet{
+	private static final String NT_EMAILFILE = "nt:emailfile";
+
+	private static final String ID = "id";
+
+	private static final String RECIPIENT_ADDRESS = "recipientAddress";
+
+	static final String IDMAP_PATH = "/content/actingreel/documents/idmap";
+
 	private static final long serialVersionUID = 1L;
 
 	@Reference
@@ -92,6 +100,9 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		} catch (IncorrectPOSTParametersException e) {
 			res.setStatus(400);
 			res.getWriter().write("Body must include email, title, & message.");
+		} catch (IllegalStateException e) {
+			res.setStatus(500);
+			res.getWriter().write("Illegal State Exception: "+e.toString());
 		}
 	}
 
@@ -109,7 +120,14 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 					IncorrectPOSTParametersException {
 		HashMap<String, String> jsonMap = parsePOSTEmailJSON(req);
 		String title = findAppropriateNodeName(parentNode,new StringBuilder().append(jsonMap.get(TITLE)));
-		Node fileNode = parentNode.addNode(title, NT_FILE);
+		Node fileNode = parentNode.addNode(title, NT_EMAILFILE);
+		
+		// Set recipientAddress from idmap node under /documents
+		String idVal = jsonMap.get(ID);
+		String recipAddress = session.getNode(IDMAP_PATH).getProperty(idVal).getString();
+		fileNode.setProperty(RECIPIENT_ADDRESS, recipAddress);
+		
+		
 		Node resNode = fileNode.addNode(JCR_CONTENT,NT_RESOURCE);
 		String dataString = jsonMap.get(MESSAGE) + 
 				"\n\nResponse address: " +
@@ -133,12 +151,13 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 		HashMap<String, String> dataMap = new HashMap<String,String>();
 		JsonParser parser = new JsonParser();
 		JsonObject json = parser.parse(req.getReader()).getAsJsonObject();
-		if(!(json.has(TITLE)&&json.has(MESSAGE)&&json.has(EMAIL))) {
+		if(!(json.has(TITLE)&&json.has(MESSAGE)&&json.has(EMAIL)&&json.has(ID))) {
 			throw new IncorrectPOSTParametersException();
 		}
 		dataMap.put(TITLE, json.get(TITLE).getAsString());
 		dataMap.put(MESSAGE, json.get(MESSAGE).getAsString());
 		dataMap.put(EMAIL, json.get(EMAIL).getAsString());
+		dataMap.put(ID,json.get(ID).getAsString());
 		return dataMap;
 	}
 
@@ -165,5 +184,3 @@ public class EmailContactServlet extends SlingAllMethodsServlet{
 
 }
 
-class IncorrectPOSTParametersException extends Throwable {
-	private static final long serialVersionUID = -2664393461911032915L; }

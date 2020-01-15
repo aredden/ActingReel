@@ -1,4 +1,4 @@
-<form id="EmailContact" class="container">
+<form data-sly-use.contact="actingreel.core.models.EmailContactModel" id="${contact.id}" class="container">
   <div class="row form-group">
     <label for="EmailContactEmail">Email Address</label>
     <input type="email" class="form-control" id="EmailContactEmail" placeholder="name@example.com">
@@ -9,7 +9,7 @@
   </div>
   <div class="row form-group">
     <label for="EmailContactTextarea">Message</label>
-    <textarea class="form-control" id="EmailContactTextArea" rows="3"></textarea>
+    <textarea class="form-control" id="EmailContactTextArea" rows="3" placeholder="Hello Juliana, ..."></textarea>
   </div>
   <button class="btn btn-primary" id="submitEmailContact" type="submit">Submit</button>
   <div id="EmailContactResponse"></div>

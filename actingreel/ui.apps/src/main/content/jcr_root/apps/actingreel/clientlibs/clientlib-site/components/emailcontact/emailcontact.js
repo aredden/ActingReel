@@ -1,27 +1,35 @@
 $(document).ready(function(){
-	$('#submitEmailContact').click(function(){
+	$('#submitEmailContact').click(function(event){
+		
+		event.preventDefault();
+		
 		var info = {
 				email: $('#EmailContactEmail').val(),
-				title: $('#EmailContactTextArea').val(),
-				message: $('#EmailContactTitle').val()
+				title: $('#EmailContactTitle').val(),
+				message: $('#EmailContactTextArea').val(),
+				id: event.target.parentNode.id
 		}
 		
+		var stringdata = JSON.stringify(info);
 		
-		$.ajax({
+		var successfunc = function(msg){
+			console.log("success");
+		}
+		
+		var errorfunc = function(xhr,status,err){
+			console.log(xhr.statusText);
+			console.log(xhr.responseText);
+			console.log(status);
+			console.log(err);
+		}
+		
+		$.ajax( {
 			type: 'POST',
 			url: '/bin/actingreel/documents',
-			contentType: 'application/json',
-			data: JSON.stringify(info),
-			success: function(msg){
-				var json = jQuery.parseJSON(msg);
-				alert(json);
-				console.log("success");
-			},
-			error: function(xhr,status,err){
-				console.log(xhr.statusText);
-				console.log(status);
-				console.log(err);
-			}
+			contentType: '"application/json; charset=utf-8"',
+			data: stringdata,
+			success: successfunc,
+			error: errorfunc
 		})
 	})
 })

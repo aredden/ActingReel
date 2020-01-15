@@ -7,7 +7,6 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
-import org.apache.sling.api.resource.ValueMap;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -25,35 +24,24 @@ import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
 
 import static actingreel.core.constants.ServletConstants.EMAIL;
-import static actingreel.core.constants.ServletConstants.MESSAGE;
-import static actingreel.core.constants.ServletConstants.TITLE;
 import static com.day.cq.commons.jcr.JcrConstants.*;
-import static org.apache.jackrabbit.vault.util.MimeTypes.APPLICATION_OCTET_STREAM;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
 
-import javax.jcr.Binary;
 import javax.jcr.Node;
-import javax.jcr.Property;
-import javax.jcr.PropertyIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.Value;
 
 @Component(service=WorkflowProcess.class,
 	property= {
 			   Constants.SERVICE_DESCRIPTION+"=Email Contact Process Step"
 })
 public class EmailContactProcessStep implements WorkflowProcess{
+
+	private static final String RECIPIENT_ADDRESS = "recipientAddress";
 
 	@Reference
 	private ResourceResolverFactory resolverFactory;
@@ -87,7 +75,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 					payloadNode.hasProperty("archive@Delete");
 			
 			if(dialogFunctional) {
-				email = payloadNode.hasProperty("email");
+				email = payloadNode.hasProperty(EMAIL);
 				archive = payloadNode.hasProperty("archive");
 			} else {
 				throw new Exception("Dialog values not seen by workflow.");
@@ -108,7 +96,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 				}
 			}
 		} catch (Exception e) {
-			LOGGER.error("******* Error from:"+e.getMessage());
+			LOGGER.error("***** Error from:"+e.getMessage());
 			LOGGER.info("***** entryset workflowargs on exception: "+args.entrySet().toString());
 			LOGGER.info("***** item data entryset on exception: "+item.getWorkflowData().getMetaDataMap().entrySet().toString());
 		}
@@ -143,10 +131,17 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		// ResourceResolver for gathering data on payload.
 		ResourceResolver resolver = session.adaptTo(ResourceResolver.class);
 		
-		// Collect email & jcr:content resources.
+		
+		
+		// Collect email & jcr:content resources.s
+		
 		Resource emailResource = resolver.getResource(payload);
 		Resource jcrContentResource = emailResource.getChild(JCR_CONTENT);
 		
+		String recipientAddress = (String) emailResource.getValueMap().get(RECIPIENT_ADDRESS);
+		if(recipientAddress.equals("unset")) {
+			recipientAddress = toAddress;
+		}
 		// Collect Email Binary from jcr:content node.
 		InputStream dataStream = jcrContentResource.getValueMap().get(JCR_DATA, InputStream.class);
 		InputStreamReader reader = new InputStreamReader(dataStream);
@@ -158,7 +153,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		// Populate email global variables.
 		emailTitle = emailResource.getName();
 		emailMessage = output.toString();
-		email.addTo(toAddress);
+		email.addTo(recipientAddress);
 		email.setMsg(emailMessage);
 		email.setSubject(emailTitle);
 

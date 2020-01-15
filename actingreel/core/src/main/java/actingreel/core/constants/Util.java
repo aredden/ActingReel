@@ -1,6 +1,6 @@
 package actingreel.core.constants;
 
-public class Util {
+public interface Util {
 	
 	public static final String ACCEPT = "accept";
 	public static final String ERROR = "error";

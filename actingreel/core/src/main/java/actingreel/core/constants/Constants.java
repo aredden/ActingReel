@@ -1,6 +1,6 @@
 package actingreel.core.constants;
 
-public class Constants {
+public interface Constants {
 
 	public static final String VIDEO_IDENTIFIER = "?v=";
 	public static final String HTML_VIDEO_TARGET = "\\\"";
@@ -15,4 +15,6 @@ public class Constants {
 	public static final String VIDEO = "video";
 	public static final String DESCRIPTION = "description";
 
+	public static final String RECIPIENT_EMAIL = "recipientEmail";
+	public static final String ID_MAP_PATH = "/content/actingreel/documents/idmap";
 }

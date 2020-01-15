@@ -15,7 +15,7 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Email"
-                        name="./email"/>
+                        name="./recipientEmail"/>
                 </items>
             </column>
         </items>
