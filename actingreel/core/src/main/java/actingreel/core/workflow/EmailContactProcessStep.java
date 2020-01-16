@@ -84,7 +84,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			String payloadPath = workflowMetaData.getPayload().toString();
 			Resource payloadResource = resolver.getResource(workflowMetaData.getPayload().toString());
 
-			if(payloadResource.getResourceType().equals(NT_FILE)) {
+			if(payloadResource.getResourceType().equals("nt:emailfile")) {
 				
 				if(email) {
 					sendEmail(payloadPath, session);
@@ -123,7 +123,6 @@ public class EmailContactProcessStep implements WorkflowProcess{
 			throws RepositoryException, 
 				   IOException, 
 				   EmailException {
-		
 		// Email related variable instantiation.
 		MessageGateway<Email> gateway;
 		Email email = new SimpleEmail();
