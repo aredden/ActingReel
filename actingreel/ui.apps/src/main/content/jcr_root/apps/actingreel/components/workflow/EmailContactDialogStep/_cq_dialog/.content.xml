@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
-	xmlns:cq="http://www.day.com/jcr/cq/1.0" 
-	xmlns:jcr="http://www.jcp.org/jcr/1.0" 
-	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    sling:resourceType="cq/gui/components/authoring/dialog"
     jcr:title="EmailContact Dialog Step"
+    sling:resourceType="cq/gui/components/authoring/dialog"
     helppath="en/cq/current">
-	<content jcr:primaryType="nt:unstructured"
+    <content
+        jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <column jcr:primaryType="nt:unstructured"
+            <column
+                jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                 <items jcr:primaryType="nt:unstructured">
-                   <emailchecked jcr:primaryType="nt:unstructured"
-                       text="Send Email"
-                       fieldLabel="Send Email"
-                       value="true"
-                       uncheckedValue="false"
-                       name="emailchecked"
-                       sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                   />
-                   <archivechecked jcr:primaryType="nt:unstructured"
-                   		text="Archive Email"
-                        fieldLabel="Archive Email"
- 			            value="true"
-  	   	                uncheckedValue="false"
-                        name="archivechecked"
+                    <emailchecked
+                        jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                    />
+                        fieldLabel="Send Email"
+                        name="emailchecked"
+                        text="Send Email"
+                        uncheckedValue="false"
+                        value="true"/>
+                    <archivechecked
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        fieldLabel="Archive Email"
+                        name="archivechecked"
+                        text="Archive Email"
+                        uncheckedValue="false"
+                        value="true"/>
                 </items>
             </column>
         </items>
     </content>
 </jcr:root>
-
-
-

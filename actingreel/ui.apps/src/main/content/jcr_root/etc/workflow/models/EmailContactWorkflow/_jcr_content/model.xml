@@ -7,7 +7,7 @@
     description="No Description"
     title="EmailContact Workflow">
     <metaData
-        cq:lastModified="{Long}1578513799295"
+        cq:lastModified="{Long}1579202190692"
         cq:lastModifiedBy="admin"
         jcr:primaryType="nt:unstructured"/>
     <nodes jcr:primaryType="nt:unstructured">
@@ -34,7 +34,8 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="actingreel.core.workflow.EmailContactProcessStep"/>
+                PROCESS="actingreel.core.workflow.EmailContactProcessStep"
+                PROCESS_AUTO_ADVANCE="true"/>
         </node2>
         <node3
             jcr:primaryType="cq:WorkflowNode"

@@ -25,15 +25,17 @@
     <modules>
         <module>core</module>
         <module>ui.apps</module>
-<!--    <module>ui.content</module> -->
+		<module>ui.content</module>
         <module>it.tests</module>
         <module>it.launcher</module>
     </modules>
 
     <properties>
-        <aem.host>localhost</aem.host>
+    	<!-- TODO Change to localhost  -->
+        <aem.host>192.168.0.183</aem.host>
         <aem.port>4502</aem.port>
-        <aem.publish.host>localhost</aem.publish.host>
+        <!-- TODO Change to localhost  -->
+        <aem.publish.host>192.168.0.183</aem.publish.host>
         <aem.publish.port>4503</aem.publish.port>
         <sling.user>admin</sling.user>
         <sling.password>admin</sling.password>

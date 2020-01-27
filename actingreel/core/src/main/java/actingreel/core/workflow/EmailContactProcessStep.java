@@ -141,6 +141,7 @@ public class EmailContactProcessStep implements WorkflowProcess{
 		if(recipientAddress.equals("unset")) {
 			recipientAddress = toAddress;
 		}
+		
 		// Collect Email Binary from jcr:content node.
 		InputStream dataStream = jcrContentResource.getValueMap().get(JCR_DATA, InputStream.class);
 		InputStreamReader reader = new InputStreamReader(dataStream);
